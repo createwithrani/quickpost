@@ -24,15 +24,18 @@ domReady(() => {
 				}
 				unsubscribe();
 				const addButton = (
-					<a
+					<button
 						class="components-button is-secondary"
 						id="createwithrani-add-new-button"
 						href={addQueryArgs("post-new.php", {
 							post_type: postType,
 						})}
+						style={{
+							textTransform: "capitalize",
+						}}
 					>
-						{__("Add New", "wordpress")}
-					</a>
+						{__(`Add New ${postType}`, "wordpress")}
+					</button>
 				);
 
 				requestAnimationFrame(() => {

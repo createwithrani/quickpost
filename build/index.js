@@ -166,13 +166,16 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
         }
 
         unsubscribe();
-        const addButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+        const addButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
           class: "components-button is-secondary",
           id: "createwithrani-add-new-button",
           href: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.addQueryArgs)("post-new.php", {
             post_type: postType
-          })
-        }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New", "wordpress"));
+          }),
+          style: {
+            textTransform: "capitalize"
+          }
+        }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(`Add New ${postType}`, "wordpress"));
         requestAnimationFrame(() => {
           if (!document.querySelector(".edit-post-header-toolbar")) {
             return;
