@@ -173,7 +173,8 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
             post_type: postType
           }),
           style: {
-            textTransform: "capitalize"
+            textTransform: "capitalize",
+            margin: "0 1em"
           }
         }, sprintf(
         /* translators: %s: Name of current post type. */

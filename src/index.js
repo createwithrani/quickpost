@@ -32,6 +32,7 @@ domReady(() => {
 						})}
 						style={{
 							textTransform: "capitalize",
+							margin: "0 1em",
 						}}
 					>
 						{sprintf(
