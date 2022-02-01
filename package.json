@@ -1,14 +1,34 @@
 {
-  "name": "Add New Post",
+  "name": "add-new-post",
   "version": "0.1.0",
-  "main": "Gruntfile.js",
+  "main": "index.js",
   "author": "Aurooba Ahmed",
   "scripts": {
     "start": "grunt default",
     "readme": "grunt readme",
-    "i18n": "grunt i18n"
+    "i18n": "grunt i18n",
+    "build": "wp-scripts build",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:md:js": "wp-scripts lint-md-js",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"startwp": "wp-scripts start",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js"
   },
+  "dependencies": {
+		"@wordpress/block-editor": "^8.0.11",
+		"@wordpress/blocks": "^11.1.4",
+		"@wordpress/i18n": "^4.2.4"
+	},
   "devDependencies": {
+    "@wordpress/scripts": "^20.0.2",
     "grunt": "^0.4.5",
     "grunt-wp-i18n": "~0.5.0",
     "grunt-wp-readme-to-markdown": "~1.0.0"
