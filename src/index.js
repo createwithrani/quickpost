@@ -10,19 +10,11 @@ import { renderToString } from "@wordpress/element";
 domReady(() => {
 	if (window._wpLoadBlockEditor) {
 		window._wpLoadBlockEditor.then(function () {
-			// I should be able to combine these two constants, right? This feels oddly redundant and weird. I must be missing something.
-			const unsubscribe = subscribe(() => {
-				const postType = select("core/editor").getCurrentPostType();
-				if (!postType) {
-					return null;
-				}
-			});
 			const AddButton = subscribe(() => {
 				const postType = select("core/editor").getCurrentPostType();
 				if (!postType) {
 					return null;
 				}
-				unsubscribe();
 				const addButton = (
 					<a
 						class="components-button is-secondary"
@@ -37,7 +29,7 @@ domReady(() => {
 					>
 						{sprintf(
 							/* translators: %s: Name of current post type. */
-							__("Add New %s", "add-new-post"),
+							__("Add New %s", "default"),
 							postType
 						)}
 					</a>

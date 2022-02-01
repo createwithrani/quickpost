@@ -150,14 +150,6 @@ __webpack_require__.r(__webpack_exports__);
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
   if (window._wpLoadBlockEditor) {
     window._wpLoadBlockEditor.then(function () {
-      // I should be able to combine these two constants, right? This feels oddly redundant and weird. I must be missing something.
-      const unsubscribe = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.subscribe)(() => {
-        const postType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.select)("core/editor").getCurrentPostType();
-
-        if (!postType) {
-          return null;
-        }
-      });
       const AddButton = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.subscribe)(() => {
         const postType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.select)("core/editor").getCurrentPostType();
 
@@ -165,7 +157,6 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
           return null;
         }
 
-        unsubscribe();
         const addButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
           class: "components-button is-secondary",
           id: "createwithrani-add-new-button",
@@ -178,7 +169,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
           }
         }, sprintf(
         /* translators: %s: Name of current post type. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New %s", "add-new-post"), postType));
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New %s", "default"), postType));
         requestAnimationFrame(() => {
           if (!document.querySelector(".edit-post-header-toolbar")) {
             return;
