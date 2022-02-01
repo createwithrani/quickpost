@@ -34,7 +34,11 @@ domReady(() => {
 							textTransform: "capitalize",
 						}}
 					>
-						{__(`Add New ${postType}`, "wordpress")}
+						{sprintf(
+							/* translators: %s: Name of current post type. */
+							__("Add New %s", "add-new-post"),
+							postType
+						)}
 					</a>
 				);
 

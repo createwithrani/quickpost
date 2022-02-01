@@ -175,7 +175,9 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
           style: {
             textTransform: "capitalize"
           }
-        }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(`Add New ${postType}`, "wordpress"));
+        }, sprintf(
+        /* translators: %s: Name of current post type. */
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New %s", "add-new-post"), postType));
         requestAnimationFrame(() => {
           if (!document.querySelector(".edit-post-header-toolbar")) {
             return;
