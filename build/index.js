@@ -166,7 +166,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
         }
 
         unsubscribe();
-        const addButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        const addButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
           class: "components-button is-secondary",
           id: "createwithrani-add-new-button",
           href: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.addQueryArgs)("post-new.php", {
