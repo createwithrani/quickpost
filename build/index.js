@@ -2,6 +2,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["coreData"];
+
+/***/ }),
+
 /***/ "@wordpress/data":
 /*!******************************!*\
   !*** external ["wp","data"] ***!
@@ -9,16 +19,6 @@
 /***/ (function(module) {
 
 module.exports = window["wp"]["data"];
-
-/***/ }),
-
-/***/ "@wordpress/dom-ready":
-/*!**********************************!*\
-  !*** external ["wp","domReady"] ***!
-  \**********************************/
-/***/ (function(module) {
-
-module.exports = window["wp"]["domReady"];
 
 /***/ }),
 
@@ -39,6 +39,16 @@ module.exports = window["wp"]["element"];
 /***/ (function(module) {
 
 module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "@wordpress/plugins":
+/*!*********************************!*\
+  !*** external ["wp","plugins"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["plugins"];
 
 /***/ }),
 
@@ -129,14 +139,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
 /* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__);
 
 
 /**
@@ -147,45 +159,86 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
-  if (window._wpLoadBlockEditor) {
-    window._wpLoadBlockEditor.then(function () {
-      const AddButton = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.subscribe)(() => {
-        const postType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.select)("core/editor").getCurrentPostType();
-
-        if (!postType) {
-          return null;
-        }
-
-        const addButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-          class: "components-button is-secondary",
-          id: "createwithrani-add-new-button",
-          href: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.addQueryArgs)("post-new.php", {
-            post_type: postType
-          }),
-          style: {
-            textTransform: "capitalize",
-            margin: "0 1em"
-          }
-        }, sprintf(
-        /* translators: %s: Name of current post type. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New %s", "default"), postType));
-        requestAnimationFrame(() => {
-          if (!document.querySelector(".edit-post-header-toolbar")) {
-            return;
-          } // Redundant extra check added because of a bug where the above check wasn't working, credit: Extendify plugin
 
 
-          if (document.getElementById("createwithrani-add-new-button")) {
-            return;
-          }
+const AddNewPostButton = _ref => {
+  let {
+    postType
+  } = _ref;
 
-          document.querySelector(".edit-post-header-toolbar").insertAdjacentHTML("beforeend", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.renderToString)(addButton));
-          AddButton();
-        });
-      });
+  if (!postType) {
+    return null;
+  }
+
+  const {
+    singleLabel,
+    addNewLabel
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    const {
+      getPostTypes
+    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store);
+    const includedPostType = [postType];
+    const filteredPostTypes = getPostTypes({
+      per_page: -1
+    })?.filter(_ref2 => {
+      let {
+        viewable,
+        slug
+      } = _ref2;
+      return viewable && includedPostType.includes(slug);
+    });
+
+    if (undefined !== filteredPostTypes) {
+      return {
+        addNewLabel: filteredPostTypes[0].labels.add_new,
+        singleLabel: filteredPostTypes[0].labels.singular_name
+      };
+    }
+
+    return {
+      addNewLabel: undefined,
+      singleLabel: undefined
+    };
+  });
+
+  if (undefined !== addNewLabel) {
+    const AddButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      class: "components-button is-secondary",
+      id: "createwithrani-add-new-button",
+      href: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.addQueryArgs)("post-new.php", {
+        post_type: postType
+      }),
+      style: {
+        textTransform: "capitalize",
+        margin: "0 1em"
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, sprintf(
+    /* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1$s %2$s", "createwithrani-add-new-post"), addNewLabel, singleLabel)));
+    requestAnimationFrame(() => {
+      if (!document.querySelector(".edit-post-header-toolbar__left")) {
+        return;
+      } // Redundant extra check added because of a bug where the above check wasn't working, credit: Extendify plugin
+
+
+      if (document.getElementById("createwithrani-add-new-button")) {
+        return;
+      }
+
+      document.querySelector(".edit-post-header-toolbar__left").insertAdjacentHTML("beforeend", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.renderToString)(AddButton));
     });
   }
+
+  return null;
+};
+
+const AddNewPostButtonWrapped = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
+  return {
+    postType: select("core/editor").getCurrentPostType()
+  };
+})(AddNewPostButton);
+(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__.registerPlugin)("createwithrani-add-new-post", {
+  render: AddNewPostButtonWrapped
 });
 }();
 /******/ })()

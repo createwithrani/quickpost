@@ -1,0 +1,39 @@
+# Copyright (C) 2022 Aurooba Ahmed
+# This file is distributed under the same license as the Add New Post plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Add New Post 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/add-new-post\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-02-02T21:59:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: createwithrani-add-new-post\n"
+
+#. Plugin Name of the plugin
+msgid "Add New Post"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://createwithrani.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Adds an \"Add New\" button to the Block Editor toolbar, so you can easily create new posts/pages/custom post types."
+msgstr ""
+
+#. Author of the plugin
+msgid "Aurooba Ahmed"
+msgstr ""
+
+#. translators: %1$s: the phrase "Add New", %2$s: Name of current post type.
+#: build/index.js:217
+#: src/index.js:50
+#: build/index.js:105
+msgid "%1$s %2$s"
+msgstr ""

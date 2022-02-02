@@ -5,24 +5,17 @@
  * Description:     Adds an "Add New" button to the Block Editor toolbar, so you can easily create new posts/pages/custom post types.
  * Author:          Aurooba Ahmed
  * Author URI:      https://createwithrani.com
- * Text Domain:     default
+ * Text Domain:     createwithrani-add-new-post
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package         add-new-post
- */
-
-/**
- * Functions to register client-side assets (scripts and stylesheets) for the
- * Gutenberg block.
- *
- * @package movies
+ * @package         createwithrani-add-new-post
  */
 
 /**
  * Registers all block assets so that they can be enqueued through Gutenberg in
  * the corresponding context.
- *	todo: check if wordpress text domain auto loads
+ *
  */
 function createwithrani_add_new_post_script() {
 
@@ -31,7 +24,6 @@ function createwithrani_add_new_post_script() {
 
 	// automatically load dependencies and version
 	$asset_file = include $dir . '/build/index.asset.php';
-
 	wp_enqueue_script(
 		'createwithrani-add-new-post-js',
 		plugins_url( $index_js, __FILE__ ),
