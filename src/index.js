@@ -8,8 +8,11 @@ import { renderToString } from "@wordpress/element";
 import { addQueryArgs } from "@wordpress/url";
 import { registerPlugin } from "@wordpress/plugins";
 
-const AddNewPostButton = ({ postType }) => {
+const AddNewPostButton = ({ postType, newPost }) => {
 	if (!postType) {
+		return null;
+	}
+	if (newPost) {
 		return null;
 	}
 
@@ -73,6 +76,7 @@ const AddNewPostButton = ({ postType }) => {
 const AddNewPostButtonWrapped = withSelect((select) => {
 	return {
 		postType: select("core/editor").getCurrentPostType(),
+		newPost: select("core/editor").isCleanNewPost(),
 	};
 })(AddNewPostButton);
 

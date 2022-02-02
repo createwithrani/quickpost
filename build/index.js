@@ -163,10 +163,15 @@ __webpack_require__.r(__webpack_exports__);
 
 const AddNewPostButton = _ref => {
   let {
-    postType
+    postType,
+    newPost
   } = _ref;
 
   if (!postType) {
+    return null;
+  }
+
+  if (newPost) {
     return null;
   }
 
@@ -234,7 +239,8 @@ const AddNewPostButton = _ref => {
 
 const AddNewPostButtonWrapped = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
   return {
-    postType: select("core/editor").getCurrentPostType()
+    postType: select("core/editor").getCurrentPostType(),
+    newPost: select("core/editor").isCleanNewPost()
   };
 })(AddNewPostButton);
 (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__.registerPlugin)("createwithrani-add-new-post", {
