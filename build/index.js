@@ -213,8 +213,8 @@ const AddNewPostButton = _ref => {
         margin: "0 1em"
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, sprintf(
-    /* translators: %1s: the phrase "Add New", %2s: Name of current post type. */
-    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1s %2s", "createwithrani-add-new-post"), addNewLabel, singleLabel)));
+    /* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1$s %2$s", "createwithrani-add-new-post"), addNewLabel, singleLabel)));
     requestAnimationFrame(() => {
       if (!document.querySelector(".edit-post-header-toolbar__left")) {
         return;

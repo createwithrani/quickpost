@@ -46,8 +46,8 @@ const AddNewPostButton = ({ postType }) => {
 			>
 				<span>
 					{sprintf(
-						/* translators: %1s: the phrase "Add New", %2s: Name of current post type. */
-						__("%1s %2s", "createwithrani-add-new-post"),
+						/* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+						__("%1$s %2$s", "createwithrani-add-new-post"),
 						addNewLabel,
 						singleLabel
 					)}
