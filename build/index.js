@@ -218,7 +218,7 @@ const AddNewPostButtonWrapped = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.
     postType: select("core/editor").getCurrentPostType()
   };
 })(AddNewPostButton);
-(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__.registerPlugin)("createwithrani/add-new-post", {
+(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__.registerPlugin)("createwithrani-add-new-post", {
   render: AddNewPostButtonWrapped
 });
 }();

@@ -65,6 +65,6 @@ const AddNewPostButtonWrapped = withSelect((select) => {
 	};
 })(AddNewPostButton);
 
-registerPlugin("createwithrani/add-new-post", {
+registerPlugin("createwithrani-add-new-post", {
 	render: AddNewPostButtonWrapped,
 });
