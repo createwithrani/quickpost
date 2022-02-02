@@ -1,3 +1,7 @@
+/**
+ * WordPress dependencies
+ */
+import { __ } from "@wordpress/i18n";
 import { useSelect, withSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 import { renderToString } from "@wordpress/element";
@@ -40,7 +44,14 @@ const AddNewPostButton = ({ postType }) => {
 					margin: "0 1em",
 				}}
 			>
-				<span>{`${addNewLabel} ${singleLabel}`}</span>
+				<span>
+					{sprintf(
+						/* translators: %1s: the phrase "Add New", %2s: Name of current post type. */
+						__("%1s %2s", "createwithrani-add-new-post"),
+						addNewLabel,
+						singleLabel
+					)}
+				</span>
 			</a>
 		);
 		requestAnimationFrame(() => {
