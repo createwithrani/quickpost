@@ -31,7 +31,6 @@ function createwithrani_add_new_post_script() {
 
 	// automatically load dependencies and version
 	$asset_file = include $dir . '/build/index.asset.php';
-
 	wp_enqueue_script(
 		'createwithrani-add-new-post-js',
 		plugins_url( $index_js, __FILE__ ),
