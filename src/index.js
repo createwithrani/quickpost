@@ -2,20 +2,30 @@
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-import { useSelect, withSelect } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
-import { renderToString } from "@wordpress/element";
+import { renderToString, useState } from "@wordpress/element";
 import { addQueryArgs } from "@wordpress/url";
 import { registerPlugin } from "@wordpress/plugins";
 
-const AddNewPostButton = ({ postType, newPost }) => {
+const AddNewPostButton = () => {
+	const { postType } = useSelect((select) => {
+		return {
+			postType: select("core/editor").getCurrentPostType(),
+		};
+	});
+
 	if (!postType) {
 		return null;
 	}
-	if (newPost) {
-		return null;
-	}
+	const { newState, setNewState } = useState(true);
+	const { newPost } = useSelect((select) => {
+		const newPost = select("core/editor").isCleanNewPost();
 
+		return {
+			newPost: newPost,
+		};
+	});
 	const { singleLabel, addNewLabel } = useSelect((select) => {
 		const { getPostTypes } = select(coreStore);
 		const includedPostType = [postType];
@@ -34,7 +44,9 @@ const AddNewPostButton = ({ postType, newPost }) => {
 			singleLabel: undefined,
 		};
 	});
+	// console.log("post is " + newPost);
 	if (undefined !== addNewLabel) {
+		console.log("post is " + newPost);
 		const AddButton = (
 			<a
 				class="components-button is-secondary"
@@ -57,29 +69,55 @@ const AddNewPostButton = ({ postType, newPost }) => {
 				</span>
 			</a>
 		);
-		requestAnimationFrame(() => {
+		const DisabledButton = (
+			<button
+				class="components-button is-secondary"
+				id="createwithrani-add-new-button"
+				style={{
+					textTransform: "capitalize",
+					margin: "0 1em",
+				}}
+				aria-disabled={true}
+			>
+				<span>
+					{sprintf(
+						/* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+						__("%1$s %2$s", "createwithrani-add-new-post"),
+						addNewLabel,
+						singleLabel
+					)}
+				</span>
+			</button>
+		);
+		const paintbutton = () => {
 			if (!document.querySelector(".edit-post-header-toolbar__left")) {
 				return;
 			}
-			// Redundant extra check added because of a bug where the above check wasn't working, credit: Extendify plugin
 			if (document.getElementById("createwithrani-add-new-button")) {
-				return;
+				var existingButton = document.getElementById(
+					"createwithrani-add-new-button"
+				);
+				existingButton.remove();
 			}
-			document
-				.querySelector(".edit-post-header-toolbar__left")
-				.insertAdjacentHTML("beforeend", renderToString(AddButton));
-		});
-	}
+			if (newPost) {
+				document
+					.querySelector(".edit-post-header-toolbar__left")
+					.insertAdjacentHTML(
+						"beforeend",
+						renderToString(DisabledButton)
+					);
+			} else {
+				document
+					.querySelector(".edit-post-header-toolbar__left")
+					.insertAdjacentHTML("beforeend", renderToString(AddButton));
+			}
+		};
 
+		requestAnimationFrame(paintbutton);
+	}
 	return null;
 };
-const AddNewPostButtonWrapped = withSelect((select) => {
-	return {
-		postType: select("core/editor").getCurrentPostType(),
-		newPost: select("core/editor").isCleanNewPost(),
-	};
-})(AddNewPostButton);
 
 registerPlugin("createwithrani-add-new-post", {
-	render: AddNewPostButtonWrapped,
+	render: AddNewPostButton,
 });
