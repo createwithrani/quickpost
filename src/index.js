@@ -57,6 +57,10 @@ const AddNewPostButton = () => {
 				style={{
 					textTransform: "capitalize",
 					margin: "0 1em",
+					display: "block",
+					maxHeight: "36px",
+					minHeight: "36px",
+					display: "flex",
 				}}
 			>
 				<span>
@@ -76,6 +80,10 @@ const AddNewPostButton = () => {
 				style={{
 					textTransform: "capitalize",
 					margin: "0 1em",
+					display: "block",
+					maxHeight: "36px",
+					minHeight: "36px",
+					display: "flex",
 				}}
 				aria-disabled={true}
 			>
