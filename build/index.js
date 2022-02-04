@@ -161,20 +161,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const AddNewPostButton = _ref => {
-  let {
-    postType,
-    newPost
-  } = _ref;
+const AddNewPostButton = () => {
+  const {
+    postType
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    return {
+      postType: select("core/editor").getCurrentPostType()
+    };
+  });
 
   if (!postType) {
     return null;
   }
 
-  if (newPost) {
-    return null;
-  }
-
+  const {
+    newState,
+    setNewState
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const {
+    newPost
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    const newPost = select("core/editor").isCleanNewPost();
+    return {
+      newPost: newPost
+    };
+  });
   const {
     singleLabel,
     addNewLabel
@@ -185,11 +196,11 @@ const AddNewPostButton = _ref => {
     const includedPostType = [postType];
     const filteredPostTypes = getPostTypes({
       per_page: -1
-    })?.filter(_ref2 => {
+    })?.filter(_ref => {
       let {
         viewable,
         slug
-      } = _ref2;
+      } = _ref;
       return viewable && includedPostType.includes(slug);
     });
 
@@ -204,9 +215,10 @@ const AddNewPostButton = _ref => {
       addNewLabel: undefined,
       singleLabel: undefined
     };
-  });
+  }); // console.log("post is " + newPost);
 
   if (undefined !== addNewLabel) {
+    console.log("post is " + newPost);
     const AddButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       class: "components-button is-secondary",
       id: "createwithrani-add-new-button",
@@ -220,31 +232,43 @@ const AddNewPostButton = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, sprintf(
     /* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
     (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1$s %2$s", "createwithrani-add-new-post"), addNewLabel, singleLabel)));
-    requestAnimationFrame(() => {
+    const DisabledButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      class: "components-button is-secondary",
+      id: "createwithrani-add-new-button",
+      style: {
+        textTransform: "capitalize",
+        margin: "0 1em"
+      },
+      "aria-disabled": true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, sprintf(
+    /* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+    (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1$s %2$s", "createwithrani-add-new-post"), addNewLabel, singleLabel)));
+
+    const paintbutton = () => {
       if (!document.querySelector(".edit-post-header-toolbar__left")) {
-        return;
-      } // Redundant extra check added because of a bug where the above check wasn't working, credit: Extendify plugin
-
-
-      if (document.getElementById("createwithrani-add-new-button")) {
         return;
       }
 
-      document.querySelector(".edit-post-header-toolbar__left").insertAdjacentHTML("beforeend", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.renderToString)(AddButton));
-    });
+      if (document.getElementById("createwithrani-add-new-button")) {
+        var existingButton = document.getElementById("createwithrani-add-new-button");
+        existingButton.remove();
+      }
+
+      if (newPost) {
+        document.querySelector(".edit-post-header-toolbar__left").insertAdjacentHTML("beforeend", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.renderToString)(DisabledButton));
+      } else {
+        document.querySelector(".edit-post-header-toolbar__left").insertAdjacentHTML("beforeend", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.renderToString)(AddButton));
+      }
+    };
+
+    requestAnimationFrame(paintbutton);
   }
 
   return null;
 };
 
-const AddNewPostButtonWrapped = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
-  return {
-    postType: select("core/editor").getCurrentPostType(),
-    newPost: select("core/editor").isCleanNewPost()
-  };
-})(AddNewPostButton);
 (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__.registerPlugin)("createwithrani-add-new-post", {
-  render: AddNewPostButtonWrapped
+  render: AddNewPostButton
 });
 }();
 /******/ })()
