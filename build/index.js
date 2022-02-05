@@ -249,10 +249,7 @@ function AddNewPostButton() {
         minHeight: "36px",
         display: "flex"
       },
-      disabled: newPost
-      /* do I still need the aria explicitly?
-       check if component adds it on its own */
-      ,
+      disabled: newPost,
       "aria-disabled": newPost,
       onClick: () => location.href = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_5__.addQueryArgs)("post-new.php", {
         post_type: postType

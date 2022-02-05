@@ -73,8 +73,6 @@ function AddNewPostButton() {
 					display: "flex",
 				}}
 				disabled={newPost}
-				/* do I still need the aria explicitly?
-				 check if component adds it on its own */
 				aria-disabled={newPost}
 				onClick={() =>
 					(location.href = addQueryArgs("post-new.php", {
