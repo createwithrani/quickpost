@@ -62,7 +62,7 @@ function AddNewPostButton() {
 	if (undefined !== addNewLabel) {
 		return (
 			<Button
-				className="components-button is-secondary"
+				isSecondary
 				id="createwithrani-add-new-button"
 				style={{
 					textTransform: "capitalize",

@@ -239,7 +239,7 @@ function AddNewPostButton() {
 
   if (undefined !== addNewLabel) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
-      className: "components-button is-secondary",
+      isSecondary: true,
       id: "createwithrani-add-new-button",
       style: {
         textTransform: "capitalize",
