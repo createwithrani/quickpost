@@ -14,12 +14,10 @@ import { addQueryArgs } from "@wordpress/url";
  * @return {string} Return the rendered Quick Post Button
  */
 function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
-	// Basically don't run till we get all our data from the HoC
-
 	return (
 		<Button
 			isSecondary
-			id="createwithrani-add-new-button"
+			id="createwithrani-quick-post-button"
 			style={{
 				textTransform: "capitalize",
 				margin: "0 0 0 1em",
@@ -30,8 +28,8 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 				borderTopRightRadius: "0px",
 				borderBottomRightRadius: "0px",
 			}}
-			disabled={newPost}
-			aria-disabled={newPost}
+			disabled={!newPost}
+			aria-disabled={!newPost}
 			onClick={() =>
 				(location.href = addQueryArgs("post-new.php", {
 					post_type: postType,
