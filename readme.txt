@@ -26,7 +26,7 @@ If you need support, please use the support forum to reach out. 🆘
 * A disabled button is available in the toolbar in brand new posts
 * The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
 
-### Upcoming Features (coming soon!)
+### Upcoming Features
 
 * A handy shortcut to create new posts from your keyboard when in the block editor
 * Developers: the ability to filter the button's visibility
