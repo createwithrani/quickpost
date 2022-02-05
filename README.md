@@ -27,3 +27,6 @@ If you need support, please use the support forum to reach out. 🆘
 
 - WordPress 5.9+
 - PHP 7.0+
+
+## Thanks these lovely humans!
+This was an odd duck, although relatively easy to make. I truly appreciate people taking time out of their day to test and give me feedback so I could make this tiny but handy plugin great. Major props to @sc0ttkclark, @treadlightly, and @christinaworkman for all their help! 💟
