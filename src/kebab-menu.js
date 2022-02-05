@@ -10,8 +10,9 @@ import { __ } from "@wordpress/i18n";
 import { DropdownMenu, MenuGroup, MenuItem } from "@wordpress/components";
 import { moreVertical } from "@wordpress/icons";
 import apiFetch from "@wordpress/api-fetch";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
+import { addQueryArgs } from "@wordpress/url";
 
 /**
  * Create the kebab menu for the Quick Post Button
@@ -43,29 +44,35 @@ function QuickPostKebabMenu({ newPost, singleLabel }) {
 		};
 	});
 
-	function duplicatedData() {
-		const DuplicatePost = {
-			author: currentPostData.author,
-			content: currentPostData.content,
-			title: currentPostData.title,
-			excerpt: currentPostData.excerpt,
-			comment_status: currentPostData.comment_status,
-			ping_status: currentPostData.ping_status,
-			password: currentPostData.password,
-			parent: currentPostData.parent,
-			menu_order: currentPostData,
-			meta: currentPostData.meta,
-		};
+	const DuplicatePost = {
+		author: currentPostData.author,
+		content: currentPostData.content,
+		title: "Copy of " + currentPostData.title,
+		excerpt: currentPostData.excerpt,
+		comment_status: currentPostData.comment_status,
+		ping_status: currentPostData.ping_status,
+		password: currentPostData.password,
+		parent: currentPostData.parent,
+		menu_order: currentPostData,
+		meta: currentPostData.meta,
+	};
+	useEffect(() => {
 		apiFetch({
 			path: "wp/v2/posts",
 			method: "POST",
 			data: DuplicatePost,
 		}).then((data) => {
-			console.log("response from apifetch: ", data);
-			// setPostId(data.id);
+			setPostId(data.id);
 		});
+	}, [currentPostData]);
+	function goToDuplicatePost() {
+		if (0 !== postId) {
+			return addQueryArgs("post.php", {
+				post: postId,
+				action: "edit",
+			});
+		}
 	}
-	console.log(currentPostData);
 	return (
 		<DropdownMenu
 			className="createwithrani-quick-post-kebab"
@@ -75,7 +82,9 @@ function QuickPostKebabMenu({ newPost, singleLabel }) {
 		>
 			{() => (
 				<MenuGroup>
-					<MenuItem onClick={duplicatedData}>
+					<MenuItem
+						onClick={() => (location.href = goToDuplicatePost())}
+					>
 						{sprintf(
 							/* translators: %s: singular label of current post type i.e Page, Post */
 							__(
@@ -90,5 +99,5 @@ function QuickPostKebabMenu({ newPost, singleLabel }) {
 		</DropdownMenu>
 	);
 }
-
+//onClick={() => (location.href = duplicatedData)}
 export default QuickPostKebabMenu;
