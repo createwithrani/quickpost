@@ -22,40 +22,13 @@ import { getPostInfo, getPostLabels } from "./utils";
  * @return {string} Return the rendered Quick Post Button
  */
 function QuickPostButton() {
-	const { postType } = useSelect((select) => {
-		return {
-			postType: select("core/editor").getCurrentPostType(),
-		};
-	});
-	const { newPost } = useSelect((select) => {
-		const newPost = select("core/editor").isCleanNewPost();
-
-		return {
-			newPost: newPost,
-		};
-	});
+	const { postType, newPost } = getPostInfo();
 	if (!postType) {
 		return null;
 	}
-	const { singleLabel, addNewLabel } = useSelect((select) => {
-		const { getPostTypes } = select(coreStore);
-		const includedPostType = [postType];
-		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
-			({ viewable, slug }) => viewable && includedPostType.includes(slug)
-		);
-		if (undefined !== filteredPostTypes) {
-			return {
-				addNewLabel: filteredPostTypes[0].labels.add_new,
-				singleLabel: filteredPostTypes[0].labels.singular_name,
-			};
-		}
+	const { addNewLabel, singleLabel } = getPostLabels(postType);
 
-		return {
-			addNewLabel: undefined,
-			singleLabel: undefined,
-		};
-	});
-	console.log(newPost);
+	// Until we get the label info back, we don't want to render the button.
 	if (undefined !== addNewLabel) {
 		return (
 			<>
@@ -66,9 +39,7 @@ function QuickPostButton() {
 					singleLabel={singleLabel}
 				/>
 				<QuickPostKebabMenu
-					postType={postType}
 					newPost={newPost}
-					addNewLabel={addNewLabel}
 					singleLabel={singleLabel}
 				/>
 			</>
@@ -83,12 +54,13 @@ function QuickPostButton() {
  */
 subscribe(() => {
 	const quickpostbutton = document.querySelector(
-		"#createwithrani-add-new-button-wrapper"
+		"#createwithrani-quick-post-button-wrapper"
 	);
 
 	// If the Quick Post Button already exists, skip render
 	// (which we can do because we are finally in a functional call!)
 	if (quickpostbutton) {
+		// quickpostbutton.remove();
 		return;
 	}
 
@@ -105,7 +77,7 @@ subscribe(() => {
 		// So turns out you can't append to an existing container without
 		// using dangerouslySetInnerHTML, which..I don't want to use.
 		const buttonWrapper = document.createElement("div");
-		buttonWrapper.id = "createwithrani-add-new-button-wrapper";
+		buttonWrapper.id = "createwithrani-quick-post-button-wrapper";
 		buttonWrapper.style.cssText = "display:flex;";
 		// Now we add the empty div to the existing toolbar element
 		// so we can fill it.
@@ -113,7 +85,7 @@ subscribe(() => {
 
 		render(
 			<QuickPostButton />,
-			document.getElementById("createwithrani-add-new-button-wrapper")
+			document.getElementById("createwithrani-quick-post-button-wrapper")
 		);
 	});
 });

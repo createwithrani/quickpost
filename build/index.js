@@ -1,5 +1,4 @@
 /******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@wordpress/icons/build-module/library/more-vertical.js":
@@ -8,6 +7,7 @@
   \*****************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -36,6 +36,7 @@ const moreVertical = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createEl
   \***************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -73,10 +74,9 @@ function AddNewPostButton(_ref) {
     addNewLabel,
     singleLabel
   } = _ref;
-  // Basically don't run till we get all our data from the HoC
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
     isSecondary: true,
-    id: "createwithrani-add-new-button",
+    id: "createwithrani-quick-post-button",
     style: {
       textTransform: "capitalize",
       margin: "0 0 0 1em",
@@ -87,8 +87,8 @@ function AddNewPostButton(_ref) {
       borderTopRightRadius: "0px",
       borderBottomRightRadius: "0px"
     },
-    disabled: newPost,
-    "aria-disabled": newPost,
+    disabled: !newPost,
+    "aria-disabled": !newPost,
     onClick: () => location.href = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_5__.addQueryArgs)("post-new.php", {
       post_type: postType
     })
@@ -108,14 +108,17 @@ function AddNewPostButton(_ref) {
   \***************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/more-vertical.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/more-vertical.js");
 
 //wp.data.select("core/editor").getEditedPostAttribute("id")
 //wp.data.select("core").getEntityRecord('postType', 'post', 96)
@@ -123,8 +126,13 @@ __webpack_require__.r(__webpack_exports__);
 //wp.data.select("core/editor").getCurrentPost()
 
 /**
+ * External dependencies
+ */
+
+/**
  * WordPress dependencies.
  */
+
 
 
 
@@ -137,45 +145,33 @@ __webpack_require__.r(__webpack_exports__);
 
 function QuickPostKebabMenu(_ref) {
   let {
-    postType,
     newPost,
-    addNewLabel,
     singleLabel
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
-    style: {},
-    id: "createwithrani-add-new-button",
-    contentClassName: "createwithrani-add-new-button-popover",
-    position: "bottom left",
-    renderToggle: _ref2 => {
-      let {
-        isOpen,
-        onToggle
-      } = _ref2;
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-        disabled: newPost,
-        "aria-disabled": newPost,
-        isSecondary: true,
-        "aria-expanded": isOpen,
-        onClick: onToggle,
-        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"],
-        iconPosition: "right",
-        label: sprintf(
-        /* translators: %1$s: the phrase "Add New",
-        	  %2$s: Name of current post type. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1$s %2$s", "createwithrani-quick-post-button"), addNewLabel, singleLabel),
-        style: {
-          marginLeft: "-1px",
-          borderTopLeftRadius: "0px",
-          borderBottomLeftRadius: "0px",
-          display: "block",
-          maxHeight: "36px",
-          minHeight: "36px"
-        }
-      });
-    },
-    renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MenuGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MenuItem, null, "Up"))
-  });
+  const popoverProps = {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()("createwithrani-quick-post-button-popover"),
+    position: "bottom left"
+  };
+  const toggleProps = {
+    isSecondary: true,
+    disabled: !newPost,
+    style: {
+      borderTopLeftRadius: "0px",
+      borderBottomLeftRadius: "0px",
+      marginLeft: "-1px",
+      maxHeight: "36px",
+      minHeight: "36px",
+      display: "block"
+    }
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.DropdownMenu, {
+    className: "createwithrani-quick-post-kebab",
+    popoverProps: popoverProps,
+    toggleProps: toggleProps,
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.MenuGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.MenuItem, null, sprintf(
+  /* translators: %s: singular label of current post type i.e Page, Post */
+  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Duplicate %s", "createwithrani-quick-post-button"), singleLabel))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (QuickPostKebabMenu);
@@ -188,6 +184,7 @@ function QuickPostKebabMenu(_ref) {
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getPostInfo": function() { return /* binding */ getPostInfo; },
@@ -222,7 +219,7 @@ function getPostInfo() {
   const {
     newPost
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => {
-    const newPost = select("core/editor").isCleanNewPost();
+    const newPost = select("core/editor").isEditedPostSaveable();
     return {
       newPost: newPost
     };
@@ -271,12 +268,80 @@ function getPostLabels(postType) {
 
 /***/ }),
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "@wordpress/components":
 /*!************************************!*\
   !*** external ["wp","components"] ***!
   \************************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["components"];
 
 /***/ }),
@@ -287,6 +352,7 @@ module.exports = window["wp"]["components"];
   \**********************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["coreData"];
 
 /***/ }),
@@ -297,6 +363,7 @@ module.exports = window["wp"]["coreData"];
   \******************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["data"];
 
 /***/ }),
@@ -307,6 +374,7 @@ module.exports = window["wp"]["data"];
   \**********************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["domReady"];
 
 /***/ }),
@@ -317,6 +385,7 @@ module.exports = window["wp"]["domReady"];
   \*********************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["element"];
 
 /***/ }),
@@ -327,6 +396,7 @@ module.exports = window["wp"]["element"];
   \******************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["i18n"];
 
 /***/ }),
@@ -337,6 +407,7 @@ module.exports = window["wp"]["i18n"];
   \************************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["primitives"];
 
 /***/ }),
@@ -347,6 +418,7 @@ module.exports = window["wp"]["primitives"];
   \*****************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["url"];
 
 /***/ })
@@ -420,8 +492,9 @@ module.exports = window["wp"]["url"];
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 !function() {
+"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
@@ -466,56 +539,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function QuickPostButton() {
   const {
-    postType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    return {
-      postType: select("core/editor").getCurrentPostType()
-    };
-  });
-  const {
+    postType,
     newPost
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    const newPost = select("core/editor").isCleanNewPost();
-    return {
-      newPost: newPost
-    };
-  });
+  } = (0,_utils__WEBPACK_IMPORTED_MODULE_7__.getPostInfo)();
 
   if (!postType) {
     return null;
   }
 
   const {
-    singleLabel,
-    addNewLabel
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    const {
-      getPostTypes
-    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store);
-    const includedPostType = [postType];
-    const filteredPostTypes = getPostTypes({
-      per_page: -1
-    })?.filter(_ref => {
-      let {
-        viewable,
-        slug
-      } = _ref;
-      return viewable && includedPostType.includes(slug);
-    });
-
-    if (undefined !== filteredPostTypes) {
-      return {
-        addNewLabel: filteredPostTypes[0].labels.add_new,
-        singleLabel: filteredPostTypes[0].labels.singular_name
-      };
-    }
-
-    return {
-      addNewLabel: undefined,
-      singleLabel: undefined
-    };
-  });
-  console.log(newPost);
+    addNewLabel,
+    singleLabel
+  } = (0,_utils__WEBPACK_IMPORTED_MODULE_7__.getPostLabels)(postType); // Until we get the label info back, we don't want to render the button.
 
   if (undefined !== addNewLabel) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_add_button__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -524,9 +559,7 @@ function QuickPostButton() {
       addNewLabel: addNewLabel,
       singleLabel: singleLabel
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_kebab_menu__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      postType: postType,
       newPost: newPost,
-      addNewLabel: addNewLabel,
       singleLabel: singleLabel
     }));
   }
@@ -540,10 +573,11 @@ function QuickPostButton() {
 
 
 (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.subscribe)(() => {
-  const quickpostbutton = document.querySelector("#createwithrani-add-new-button-wrapper"); // If the Quick Post Button already exists, skip render
+  const quickpostbutton = document.querySelector("#createwithrani-quick-post-button-wrapper"); // If the Quick Post Button already exists, skip render
   // (which we can do because we are finally in a functional call!)
 
   if (quickpostbutton) {
+    // quickpostbutton.remove();
     return;
   }
 
@@ -557,12 +591,12 @@ function QuickPostButton() {
 
 
     const buttonWrapper = document.createElement("div");
-    buttonWrapper.id = "createwithrani-add-new-button-wrapper";
+    buttonWrapper.id = "createwithrani-quick-post-button-wrapper";
     buttonWrapper.style.cssText = "display:flex;"; // Now we add the empty div to the existing toolbar element
     // so we can fill it.
 
     editorToolbar.appendChild(buttonWrapper);
-    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(QuickPostButton, null), document.getElementById("createwithrani-add-new-button-wrapper"));
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(QuickPostButton, null), document.getElementById("createwithrani-quick-post-button-wrapper"));
   });
 });
 }();
