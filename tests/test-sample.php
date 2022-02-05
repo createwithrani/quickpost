@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Add_New_Post
+ * @package quick_post_button
  */
 
 /**

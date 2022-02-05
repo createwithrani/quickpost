@@ -1,4 +1,4 @@
-=== Add New Post ===
+=== Quick Post Button ===
 Contributors: aurooba
 Donate link: https://github.com/aurooba/sponsors
 Tags: add new, gutenberg
@@ -17,7 +17,7 @@ Adds an "Add New" button to the Block Editor toolbar, so you can easily create n
 
 == Installation ==
 
-1. Upload `add-new-post` to the `/wp-content/plugins/` directory
+1. Upload `quick-post-button` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Screenshots ==

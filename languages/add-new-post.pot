@@ -1,9 +1,9 @@
 # Copyright (C) 2022 Aurooba Ahmed
-# This file is distributed under the same license as the Add New Post plugin.
+# This file is distributed under the same license as the Quick Post Button plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Add New Post 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/add-new-post\n"
+"Project-Id-Version: Quick Post Button 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/quick-post-button\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,10 +12,10 @@ msgstr ""
 "POT-Creation-Date: 2022-02-02T21:59:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
-"X-Domain: createwithrani-add-new-post\n"
+"X-Domain: createwithrani-quick-post-button\n"
 
 #. Plugin Name of the plugin
-msgid "Add New Post"
+msgid "Quick Post Button"
 msgstr ""
 
 #. Plugin URI of the plugin
