@@ -1,38 +1,29 @@
-# Quick Post Button #
-**Contributors:** aurooba
-**Donate link:** https://github.com/aurooba/sponsors
-**Tags:** add new, gutenberg
-**Requires at least:** 5.9
-**Tested up to:** 5.9
-**Requires PHP:** 7.0
-**Stable tag:** 0.1.0
-**License:** GPLv2 or later
-**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
+# Quick Post Button
+[![License](https://img.shields.io/badge/license-GPL--2.0%2B-black.svg)](https://github.com/createwithrani/add-new-post/blob/main/license.txt)
 
-Adds an "Add New" button to the Block Editor toolbar, so you can easily create new posts/pages/custom post types.
+![Quick Post Button](https://github.com/createwithrani/add-new-post/blob/main/assets/banner-1544x500.png?raw=true)
 
-## Description ##
+Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor.
+## Description
 
-Adds an "Add New" button to the Block Editor toolbar, so you can easily create new posts/pages/custom post types.
+A razor sharp plugin that does just one thing: add an "Add New" button to the Block Editor toolbar, bringing back the ability to create new posts, pages, custom post types quickly and easily even when you're in Fullscreen Mode in the Editor.
 
-## Installation ##
+If you enjoy the plugin, please leave a review! ⭐
 
-1. Upload `quick-post-button` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
+If you have a feature request, please create an issue in the [GitHub repository](https://github.com/createwithrani/add-new-post). ➕
 
-## Screenshots ##
+If you need support, please use the support forum to reach out. 🆘
 
-### 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from ###
-![This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from](http://ps.w.org/quick-post-button/assets/screenshot-1.png)
+## Key Features
 
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-### 2. This is the second screen shot ###
-![This is the second screen shot](http://ps.w.org/quick-post-button/assets/screenshot-2.png)
+* A disabled button is available in the toolbar in brand new posts
+* The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
 
+### Upcoming Features (coming soon!)
 
-## Changelog ##
+* A handy shortcut to create new posts from your keyboard when in the block editor
+* Developers: the ability to filter the button's visibility
+## Requirements
 
-### 0.1.0 ###
-* List versions from most recent at top to oldest at bottom.
+- WordPress 5.9+
+- PHP 7.0+
