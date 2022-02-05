@@ -2,11 +2,17 @@
 //wp.data.select("core").getEntityRecord('postType', 'post', 96)
 //wp.data.select("core/editor").getEditedPostContent()
 //wp.data.select("core/editor").getCurrentPost()
+
+/**
+ * External dependencies
+ */
+import classnames from "classnames";
+
 /**
  * WordPress dependencies.
  */
 import { __ } from "@wordpress/i18n";
-import { Dropdown, Button } from "@wordpress/components";
+import { DropdownMenu, MenuGroup, MenuItem } from "@wordpress/components";
 import { moreVertical } from "@wordpress/icons";
 
 /**
@@ -15,45 +21,45 @@ import { moreVertical } from "@wordpress/icons";
  * @since 0.1.0
  * @return {string} Return the rendered Quick Post Button
  */
-function QuickPostKebabMenu({ postType, newPost, addNewLabel, singleLabel }) {
+function QuickPostKebabMenu({ newPost, singleLabel }) {
+	const popoverProps = {
+		className: classnames("createwithrani-quick-post-button-popover"),
+		position: "bottom left",
+	};
+	const toggleProps = {
+		isSecondary: true,
+		disabled: !newPost,
+		style: {
+			borderTopLeftRadius: "0px",
+			borderBottomLeftRadius: "0px",
+			marginLeft: "-1px",
+			maxHeight: "36px",
+			minHeight: "36px",
+			display: "block",
+		},
+	};
 	return (
-		<Dropdown
-			style={{}}
-			id="createwithrani-add-new-button"
-			contentClassName="createwithrani-add-new-button-popover"
-			position="bottom left"
-			renderToggle={({ isOpen, onToggle }) => (
-				<Button
-					disabled={newPost}
-					aria-disabled={newPost}
-					isSecondary
-					aria-expanded={isOpen}
-					onClick={onToggle}
-					icon={moreVertical}
-					iconPosition="right"
-					label={sprintf(
-						/* translators: %1$s: the phrase "Add New",
-							  %2$s: Name of current post type. */
-						__("%1$s %2$s", "createwithrani-quick-post-button"),
-						addNewLabel,
-						singleLabel
-					)}
-					style={{
-						marginLeft: "-1px",
-						borderTopLeftRadius: "0px",
-						borderBottomLeftRadius: "0px",
-						display: "block",
-						maxHeight: "36px",
-						minHeight: "36px",
-					}}
-				></Button>
-			)}
-			renderContent={() => (
+		<DropdownMenu
+			className="createwithrani-quick-post-kebab"
+			popoverProps={popoverProps}
+			toggleProps={toggleProps}
+			icon={moreVertical}
+		>
+			{() => (
 				<MenuGroup>
-					<MenuItem>Up</MenuItem>
+					<MenuItem>
+						{sprintf(
+							/* translators: %s: singular label of current post type i.e Page, Post */
+							__(
+								"Duplicate %s",
+								"createwithrani-quick-post-button"
+							),
+							singleLabel
+						)}
+					</MenuItem>
 				</MenuGroup>
 			)}
-		/>
+		</DropdownMenu>
 	);
 }
 
