@@ -44,11 +44,11 @@ const AddNewPostButton = () => {
 			singleLabel: undefined,
 		};
 	});
-	// console.log("post is " + newPost);
+
 	if (undefined !== addNewLabel) {
-		console.log("post is " + newPost);
+		const ButtonElement = newPost ? "button" : "a";
 		const AddButton = (
-			<a
+			<ButtonElement
 				class="components-button is-secondary"
 				id="createwithrani-add-new-button"
 				href={addQueryArgs("post-new.php", {
@@ -62,40 +62,17 @@ const AddNewPostButton = () => {
 					minHeight: "36px",
 					display: "flex",
 				}}
+				aria-disabled={newPost}
 			>
 				<span>
 					{sprintf(
 						/* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
-						__("%1$s %2$s", "createwithrani-add-new-post"),
+						__("%1$s %2$s", "createwithrani-quick-post-button"),
 						addNewLabel,
 						singleLabel
 					)}
 				</span>
-			</a>
-		);
-		const DisabledButton = (
-			<button
-				class="components-button is-secondary"
-				id="createwithrani-add-new-button"
-				style={{
-					textTransform: "capitalize",
-					margin: "0 1em",
-					display: "block",
-					maxHeight: "36px",
-					minHeight: "36px",
-					display: "flex",
-				}}
-				aria-disabled={true}
-			>
-				<span>
-					{sprintf(
-						/* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
-						__("%1$s %2$s", "createwithrani-add-new-post"),
-						addNewLabel,
-						singleLabel
-					)}
-				</span>
-			</button>
+			</ButtonElement>
 		);
 		const paintbutton = () => {
 			if (!document.querySelector(".edit-post-header-toolbar__left")) {
@@ -107,18 +84,9 @@ const AddNewPostButton = () => {
 				);
 				existingButton.remove();
 			}
-			if (newPost) {
-				document
-					.querySelector(".edit-post-header-toolbar__left")
-					.insertAdjacentHTML(
-						"beforeend",
-						renderToString(DisabledButton)
-					);
-			} else {
-				document
-					.querySelector(".edit-post-header-toolbar__left")
-					.insertAdjacentHTML("beforeend", renderToString(AddButton));
-			}
+			document
+				.querySelector(".edit-post-header-toolbar__left")
+				.insertAdjacentHTML("beforeend", renderToString(AddButton));
 		};
 
 		requestAnimationFrame(paintbutton);
@@ -126,6 +94,6 @@ const AddNewPostButton = () => {
 	return null;
 };
 
-registerPlugin("createwithrani-add-new-post", {
+registerPlugin("createwithrani-quick-post-button", {
 	render: AddNewPostButton,
 });
