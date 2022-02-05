@@ -1,24 +1,31 @@
 /**
- * WordPress dependencies
+ * WordPress dependencies.
  */
 import { __ } from "@wordpress/i18n";
-import { useSelect } from "@wordpress/data";
+import { render } from "@wordpress/element";
+import { subscribe, useSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
-import { renderToString, useState } from "@wordpress/element";
+import { Button } from "@wordpress/components";
 import { addQueryArgs } from "@wordpress/url";
-import { registerPlugin } from "@wordpress/plugins";
+import domReady from "@wordpress/dom-ready";
 
-const AddNewPostButton = () => {
+/**
+ * Create the Quick Post Button we will add to the Block Editor Toolbar
+ *
+ * @since 0.1.0
+ * @return {string} Return the rendered Quick Post Button
+ */
+function AddNewPostButton() {
+	/*
+	 * 	We need to know two things:
+	 * 	1. What post type are we in – so we can set up the URL to create a new post of 	*	the same type
+	 *	2. Is this a new post? – because if it's brand new, we don't want our button to *	be active, yer already in a new post, bud.
+	 */
 	const { postType } = useSelect((select) => {
 		return {
 			postType: select("core/editor").getCurrentPostType(),
 		};
 	});
-
-	if (!postType) {
-		return null;
-	}
-	const { newState, setNewState } = useState(true);
 	const { newPost } = useSelect((select) => {
 		const newPost = select("core/editor").isCleanNewPost();
 
@@ -26,6 +33,12 @@ const AddNewPostButton = () => {
 			newPost: newPost,
 		};
 	});
+
+	// don't run if the postType data hasn't gotten back to us yet
+	if (!postType) {
+		return null;
+	}
+
 	const { singleLabel, addNewLabel } = useSelect((select) => {
 		const { getPostTypes } = select(coreStore);
 		const includedPostType = [postType];
@@ -45,15 +58,12 @@ const AddNewPostButton = () => {
 		};
 	});
 
+	// Basically don't run till we get all our data from the HoC
 	if (undefined !== addNewLabel) {
-		const ButtonElement = newPost ? "button" : "a";
-		const AddButton = (
-			<ButtonElement
-				class="components-button is-secondary"
+		return (
+			<Button
+				className="components-button is-secondary"
 				id="createwithrani-add-new-button"
-				href={addQueryArgs("post-new.php", {
-					post_type: postType,
-				})}
 				style={{
 					textTransform: "capitalize",
 					margin: "0 1em",
@@ -62,38 +72,68 @@ const AddNewPostButton = () => {
 					minHeight: "36px",
 					display: "flex",
 				}}
+				disabled={newPost}
+				/* do I still need the aria explicitly?
+				 check if component adds it on its own */
 				aria-disabled={newPost}
+				onClick={() =>
+					(location.href = addQueryArgs("post-new.php", {
+						post_type: postType,
+					}))
+				}
 			>
 				<span>
 					{sprintf(
-						/* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+						/* translators: %1$s: the phrase "Add New",
+						 %2$s: Name of current post type. */
 						__("%1$s %2$s", "createwithrani-quick-post-button"),
 						addNewLabel,
 						singleLabel
 					)}
 				</span>
-			</ButtonElement>
+			</Button>
 		);
-		const paintbutton = () => {
-			if (!document.querySelector(".edit-post-header-toolbar__left")) {
-				return;
-			}
-			if (document.getElementById("createwithrani-add-new-button")) {
-				var existingButton = document.getElementById(
-					"createwithrani-add-new-button"
-				);
-				existingButton.remove();
-			}
-			document
-				.querySelector(".edit-post-header-toolbar__left")
-				.insertAdjacentHTML("beforeend", renderToString(AddButton));
-		};
-
-		requestAnimationFrame(paintbutton);
 	}
 	return null;
-};
+}
 
-registerPlugin("createwithrani-quick-post-button", {
-	render: AddNewPostButton,
+/**
+ * Let's subscribe (because I finally understand what this does better)
+ * and add the component to the toolbar!
+ */
+subscribe(() => {
+	const quickpostbutton = document.querySelector(
+		"#createwithrani-add-new-button-wrapper"
+	);
+
+	// If the Quick Post Button already exists, skip render
+	// (which we can do because we are finally in a functional call!)
+	if (quickpostbutton) {
+		return;
+	}
+
+	domReady(() => {
+		const editorToolbar = document.querySelector(
+			".edit-post-header-toolbar__left"
+		);
+
+		// If toolbar doesn't exist, we can't continue
+		if (!editorToolbar) {
+			return;
+		}
+
+		// So turns out you can't append to an existing container without
+		// using dangerouslySetInnerHTML, which..I don't want to use.
+		const buttonWrapper = document.createElement("div");
+		buttonWrapper.id = "createwithrani-add-new-button-wrapper";
+
+		// Now we add the empty div to the existing toolbar element
+		// so we can fill it.
+		editorToolbar.appendChild(buttonWrapper);
+
+		render(
+			<AddNewPostButton />,
+			document.getElementById("createwithrani-add-new-button-wrapper")
+		);
+	});
 });

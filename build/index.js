@@ -2,6 +2,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/core-data":
 /*!**********************************!*\
   !*** external ["wp","coreData"] ***!
@@ -22,6 +32,16 @@ module.exports = window["wp"]["data"];
 
 /***/ }),
 
+/***/ "@wordpress/dom-ready":
+/*!**********************************!*\
+  !*** external ["wp","domReady"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["domReady"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -39,16 +59,6 @@ module.exports = window["wp"]["element"];
 /***/ (function(module) {
 
 module.exports = window["wp"]["i18n"];
-
-/***/ }),
-
-/***/ "@wordpress/plugins":
-/*!*********************************!*\
-  !*** external ["wp","plugins"] ***!
-  \*********************************/
-/***/ (function(module) {
-
-module.exports = window["wp"]["plugins"];
 
 /***/ }),
 
@@ -145,14 +155,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
-/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_6__);
 
 
 /**
- * WordPress dependencies
+ * WordPress dependencies.
  */
 
 
@@ -161,7 +173,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const AddNewPostButton = () => {
+/**
+ * Create the Quick Post Button we will add to the Block Editor Toolbar
+ *
+ * @since 0.1.0
+ * @return {string} Return the rendered Quick Post Button
+ */
+
+function AddNewPostButton() {
+  /*
+   * 	We need to know two things:
+   * 	1. What post type are we in – so we can set up the URL to create a new post of 	*	the same type
+   *	2. Is this a new post? – because if it's brand new, we don't want our button to *	be active, yer already in a new post, bud.
+   */
   const {
     postType
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
@@ -169,15 +193,6 @@ const AddNewPostButton = () => {
       postType: select("core/editor").getCurrentPostType()
     };
   });
-
-  if (!postType) {
-    return null;
-  }
-
-  const {
-    newState,
-    setNewState
-  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const {
     newPost
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
@@ -185,7 +200,12 @@ const AddNewPostButton = () => {
     return {
       newPost: newPost
     };
-  });
+  }); // don't run if the postType data hasn't gotten back to us yet
+
+  if (!postType) {
+    return null;
+  }
+
   const {
     singleLabel,
     addNewLabel
@@ -215,16 +235,12 @@ const AddNewPostButton = () => {
       addNewLabel: undefined,
       singleLabel: undefined
     };
-  });
+  }); // Basically don't run till we get all our data from the HoC
 
   if (undefined !== addNewLabel) {
-    const ButtonElement = newPost ? "button" : "a";
-    const AddButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonElement, {
-      class: "components-button is-secondary",
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
+      className: "components-button is-secondary",
       id: "createwithrani-add-new-button",
-      href: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_4__.addQueryArgs)("post-new.php", {
-        post_type: postType
-      }),
       style: {
         textTransform: "capitalize",
         margin: "0 1em",
@@ -233,32 +249,52 @@ const AddNewPostButton = () => {
         minHeight: "36px",
         display: "flex"
       },
-      "aria-disabled": newPost
+      disabled: newPost
+      /* do I still need the aria explicitly?
+       check if component adds it on its own */
+      ,
+      "aria-disabled": newPost,
+      onClick: () => location.href = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_5__.addQueryArgs)("post-new.php", {
+        post_type: postType
+      })
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, sprintf(
-    /* translators: %1$s: the phrase "Add New", %2$s: Name of current post type. */
+    /* translators: %1$s: the phrase "Add New",
+     %2$s: Name of current post type. */
     (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("%1$s %2$s", "createwithrani-quick-post-button"), addNewLabel, singleLabel)));
-
-    const paintbutton = () => {
-      if (!document.querySelector(".edit-post-header-toolbar__left")) {
-        return;
-      }
-
-      if (document.getElementById("createwithrani-add-new-button")) {
-        var existingButton = document.getElementById("createwithrani-add-new-button");
-        existingButton.remove();
-      }
-
-      document.querySelector(".edit-post-header-toolbar__left").insertAdjacentHTML("beforeend", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.renderToString)(AddButton));
-    };
-
-    requestAnimationFrame(paintbutton);
   }
 
   return null;
-};
+}
+/**
+ * Let's subscribe (because I finally understand what this does better)
+ * and add the component to the toolbar!
+ */
 
-(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__.registerPlugin)("createwithrani-quick-post-button", {
-  render: AddNewPostButton
+
+(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.subscribe)(() => {
+  const quickpostbutton = document.querySelector("#createwithrani-add-new-button-wrapper"); // If the Quick Post Button already exists, skip render
+  // (which we can do because we are finally in a functional call!)
+
+  if (quickpostbutton) {
+    return;
+  }
+
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_6___default()(() => {
+    const editorToolbar = document.querySelector(".edit-post-header-toolbar__left"); // If toolbar doesn't exist, we can't continue
+
+    if (!editorToolbar) {
+      return;
+    } // So turns out you can't append to an existing container without
+    // using dangerouslySetInnerHTML, which..I don't want to use.
+
+
+    const buttonWrapper = document.createElement("div");
+    buttonWrapper.id = "createwithrani-add-new-button-wrapper"; // Now we add the empty div to the existing toolbar element
+    // so we can fill it.
+
+    editorToolbar.appendChild(buttonWrapper);
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(AddNewPostButton, null), document.getElementById("createwithrani-add-new-button-wrapper"));
+  });
 });
 }();
 /******/ })()
