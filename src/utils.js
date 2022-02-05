@@ -17,7 +17,7 @@ export function getPostInfo() {
 		};
 	});
 	const { newPost } = useSelect((select) => {
-		const newPost = select("core/editor").isCleanNewPost();
+		const newPost = select("core/editor").isEditedPostSaveable();
 
 		return {
 			newPost: newPost,
