@@ -118,12 +118,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/more-vertical.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/more-vertical.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
 
-//wp.data.select("core/editor").getEditedPostAttribute("id")
-//wp.data.select("core").getEntityRecord('postType', 'post', 96)
-//wp.data.select("core/editor").getEditedPostContent()
-//wp.data.select("core/editor").getCurrentPost()
 
 /**
  * External dependencies
@@ -132,6 +132,9 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * WordPress dependencies.
  */
+
+
+
 
 
 
@@ -164,12 +167,46 @@ function QuickPostKebabMenu(_ref) {
       display: "block"
     }
   };
+  const [postId, setPostId] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const {
+    currentPostData
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
+    return {
+      currentPostData: select("core/editor").getCurrentPost()
+    };
+  });
+
+  function duplicatedData() {
+    const DuplicatePost = {
+      author: currentPostData.author,
+      content: currentPostData.content,
+      title: currentPostData.title,
+      excerpt: currentPostData.excerpt,
+      comment_status: currentPostData.comment_status,
+      ping_status: currentPostData.ping_status,
+      password: currentPostData.password,
+      parent: currentPostData.parent,
+      menu_order: currentPostData,
+      meta: currentPostData.meta
+    };
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
+      path: "wp/v2/posts",
+      method: "POST",
+      data: DuplicatePost
+    }).then(data => {
+      console.log("response from apifetch: ", data); // setPostId(data.id);
+    });
+  }
+
+  console.log(currentPostData);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.DropdownMenu, {
     className: "createwithrani-quick-post-kebab",
     popoverProps: popoverProps,
     toggleProps: toggleProps,
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.MenuGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.MenuItem, null, sprintf(
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.MenuGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.MenuItem, {
+    onClick: duplicatedData
+  }, sprintf(
   /* translators: %s: singular label of current post type i.e Page, Post */
   (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Duplicate %s", "createwithrani-quick-post-button"), singleLabel))));
 }
@@ -332,6 +369,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	} else {}
 }());
 
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["apiFetch"];
 
 /***/ }),
 

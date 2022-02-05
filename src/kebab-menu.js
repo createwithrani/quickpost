@@ -1,8 +1,3 @@
-//wp.data.select("core/editor").getEditedPostAttribute("id")
-//wp.data.select("core").getEntityRecord('postType', 'post', 96)
-//wp.data.select("core/editor").getEditedPostContent()
-//wp.data.select("core/editor").getCurrentPost()
-
 /**
  * External dependencies
  */
@@ -14,6 +9,9 @@ import classnames from "classnames";
 import { __ } from "@wordpress/i18n";
 import { DropdownMenu, MenuGroup, MenuItem } from "@wordpress/components";
 import { moreVertical } from "@wordpress/icons";
+import apiFetch from "@wordpress/api-fetch";
+import { useState } from "@wordpress/element";
+import { useSelect } from "@wordpress/data";
 
 /**
  * Create the kebab menu for the Quick Post Button
@@ -38,6 +36,36 @@ function QuickPostKebabMenu({ newPost, singleLabel }) {
 			display: "block",
 		},
 	};
+	const [postId, setPostId] = useState(0);
+	const { currentPostData } = useSelect((select) => {
+		return {
+			currentPostData: select("core/editor").getCurrentPost(),
+		};
+	});
+
+	function duplicatedData() {
+		const DuplicatePost = {
+			author: currentPostData.author,
+			content: currentPostData.content,
+			title: currentPostData.title,
+			excerpt: currentPostData.excerpt,
+			comment_status: currentPostData.comment_status,
+			ping_status: currentPostData.ping_status,
+			password: currentPostData.password,
+			parent: currentPostData.parent,
+			menu_order: currentPostData,
+			meta: currentPostData.meta,
+		};
+		apiFetch({
+			path: "wp/v2/posts",
+			method: "POST",
+			data: DuplicatePost,
+		}).then((data) => {
+			console.log("response from apifetch: ", data);
+			// setPostId(data.id);
+		});
+	}
+	console.log(currentPostData);
 	return (
 		<DropdownMenu
 			className="createwithrani-quick-post-kebab"
@@ -47,7 +75,7 @@ function QuickPostKebabMenu({ newPost, singleLabel }) {
 		>
 			{() => (
 				<MenuGroup>
-					<MenuItem>
+					<MenuItem onClick={duplicatedData}>
 						{sprintf(
 							/* translators: %s: singular label of current post type i.e Page, Post */
 							__(
