@@ -13,7 +13,7 @@ import QuickPostKebabMenu from "./kebab-menu";
 /**
  * Internal dependencies.
  */
-import { getPostInfo, getPostLabels } from "./utils";
+import { getPostInfo, getPostLabels, getPostTypeRestBase } from "./utils";
 
 /**
  * Create the Quick Post button
@@ -27,9 +27,9 @@ function QuickPostButton() {
 		return null;
 	}
 	const { addNewLabel, singleLabel } = getPostLabels(postType);
-
+	const restBase = getPostTypeRestBase(postType);
 	// Until we get the label info back, we don't want to render the button.
-	if (undefined !== addNewLabel) {
+	if (undefined !== addNewLabel && undefined !== restBase) {
 		return (
 			<>
 				<AddNewPostButton
@@ -41,6 +41,7 @@ function QuickPostButton() {
 				<QuickPostKebabMenu
 					newPost={newPost}
 					singleLabel={singleLabel}
+					restBase={restBase}
 				/>
 			</>
 		);
