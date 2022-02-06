@@ -42,21 +42,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
-/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
-/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_3__);
 
 
 /**
  * WordPress dependencies.
  */
-
-
 
 
 
@@ -74,7 +68,7 @@ function AddNewPostButton(_ref) {
     addNewLabel,
     singleLabel
   } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     isSecondary: true,
     id: "createwithrani-quick-post-button",
     style: {
@@ -89,7 +83,7 @@ function AddNewPostButton(_ref) {
     },
     disabled: !newPost,
     "aria-disabled": !newPost,
-    onClick: () => location.href = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_5__.addQueryArgs)("post-new.php", {
+    onClick: () => location.href = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_3__.addQueryArgs)("post-new.php", {
       post_type: postType
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, sprintf(
@@ -282,6 +276,77 @@ function QuickPostKebabMenu(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (QuickPostKebabMenu);
+
+/***/ }),
+
+/***/ "./src/quick-post.js":
+/*!***************************!*\
+  !*** ./src/quick-post.js ***!
+  \***************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/utils.js");
+/* harmony import */ var _add_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./add-button */ "./src/add-button.js");
+/* harmony import */ var _kebab_menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kebab-menu */ "./src/kebab-menu.js");
+
+
+/**
+ * WordPress dependencies.
+ */
+
+/**
+ * Internal dependencies.
+ */
+
+
+
+
+/**
+ * Create the Quick Post button
+ *
+ * @since 0.1.0
+ * @return {string} Return the rendered Quick Post Button
+ */
+
+function QuickPostButton() {
+  const {
+    postType,
+    newPost
+  } = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getPostInfo)();
+
+  if (!postType) {
+    return null;
+  }
+
+  const {
+    addNewLabel,
+    singleLabel
+  } = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getPostLabels)(postType);
+  const restBase = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getPostTypeRestBase)(postType); // Until we get the label info back, we don't want to render the button.
+
+  if (undefined !== addNewLabel && undefined !== restBase) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_add_button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      postType: postType,
+      newPost: newPost,
+      addNewLabel: addNewLabel,
+      singleLabel: singleLabel
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_kebab_menu__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      newPost: newPost,
+      singleLabel: singleLabel,
+      restBase: restBase
+    }));
+  }
+
+  return null;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (QuickPostButton);
 
 /***/ }),
 
@@ -667,13 +732,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
-/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils */ "./src/utils.js");
-/* harmony import */ var _add_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./add-button */ "./src/add-button.js");
-/* harmony import */ var _kebab_menu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./kebab-menu */ "./src/kebab-menu.js");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _quick_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./quick-post */ "./src/quick-post.js");
 
 
 /**
@@ -683,69 +744,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 /**
  * Internal dependencies.
  */
 
 
-
-
-/**
- * Create the Quick Post button
- *
- * @since 0.1.0
- * @return {string} Return the rendered Quick Post Button
- */
-
-function QuickPostButton() {
-  const {
-    postType,
-    newPost
-  } = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getPostInfo)();
-
-  if (!postType) {
-    return null;
-  }
-
-  const {
-    addNewLabel,
-    singleLabel
-  } = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getPostLabels)(postType);
-  const restBase = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getPostTypeRestBase)(postType); // Until we get the label info back, we don't want to render the button.
-
-  if (undefined !== addNewLabel && undefined !== restBase) {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_add_button__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      postType: postType,
-      newPost: newPost,
-      addNewLabel: addNewLabel,
-      singleLabel: singleLabel
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_kebab_menu__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      newPost: newPost,
-      singleLabel: singleLabel,
-      restBase: restBase
-    }));
-  }
-
-  return null;
-}
 /**
  * Let's subscribe (because I finally understand what this does better)
  * and add the component to the toolbar!
  */
 
-
 (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.subscribe)(() => {
   const quickpostbutton = document.querySelector("#createwithrani-quick-post-button-wrapper"); // If the Quick Post Button already exists, skip render
-  // (which we can do because we are finally in a functional call!)
 
   if (quickpostbutton) {
-    // quickpostbutton.remove();
     return;
   }
 
-  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_4___default()(() => {
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_3___default()(() => {
     const editorToolbar = document.querySelector(".edit-post-header-toolbar__left"); // If toolbar doesn't exist, we can't continue
 
     if (!editorToolbar) {
@@ -756,11 +772,10 @@ function QuickPostButton() {
 
     const buttonWrapper = document.createElement("div");
     buttonWrapper.id = "createwithrani-quick-post-button-wrapper";
-    buttonWrapper.style.cssText = "display:flex;"; // Now we add the empty div to the existing toolbar element
-    // so we can fill it.
+    buttonWrapper.style.cssText = "display:flex;"; // add empty div to the toolbar so we can fill it.
 
     editorToolbar.appendChild(buttonWrapper);
-    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(QuickPostButton, null), document.getElementById("createwithrani-quick-post-button-wrapper"));
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_quick_post__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("createwithrani-quick-post-button-wrapper"));
   });
 });
 }();
