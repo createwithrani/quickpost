@@ -7,13 +7,13 @@ import { store as coreStore } from "@wordpress/core-data";
 import { render, useState } from "@wordpress/element";
 import { subscribe } from "@wordpress/data";
 import domReady from "@wordpress/dom-ready";
-import AddNewPostButton from "./add-button";
-import QuickPostKebabMenu from "./kebab-menu";
 
 /**
  * Internal dependencies.
  */
 import { getPostInfo, getPostLabels, getPostTypeRestBase } from "./utils";
+import AddNewPostButton from "./add-button";
+import QuickPostKebabMenu from "./kebab-menu";
 
 /**
  * Create the Quick Post button
