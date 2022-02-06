@@ -33,6 +33,7 @@ export function getPostLabels(postType) {
 		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
 			({ viewable, slug }) => viewable && includedPostType.includes(slug)
 		);
+
 		if (undefined !== filteredPostTypes) {
 			return {
 				addNewLabel: filteredPostTypes[0].labels.add_new,
@@ -46,4 +47,25 @@ export function getPostLabels(postType) {
 		};
 	});
 	return { addNewLabel, singleLabel };
+}
+
+export function getPostTypeRestBase(postType) {
+	const { rest_base } = useSelect((select) => {
+		const { getPostTypes } = select(coreStore);
+		const includedPostType = [postType];
+		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
+			({ viewable, slug }) => viewable && includedPostType.includes(slug)
+		);
+
+		if (undefined !== filteredPostTypes) {
+			return {
+				rest_base: filteredPostTypes[0].rest_base,
+			};
+		}
+
+		return {
+			rest_base: undefined,
+		};
+	});
+	return rest_base;
 }
