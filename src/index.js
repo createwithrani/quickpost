@@ -10,10 +10,10 @@ import { addQueryArgs } from "@wordpress/url";
 import domReady from "@wordpress/dom-ready";
 
 /**
- * Create the Quick Post Button we will add to the Block Editor Toolbar
+ * Create the QuickPost Button we will add to the Block Editor Toolbar
  *
  * @since 0.1.0
- * @return {string} Return the rendered Quick Post Button
+ * @return {string} Return the rendered QuickPost Button
  */
 function AddNewPostButton() {
 	/*
@@ -84,7 +84,7 @@ function AddNewPostButton() {
 					{sprintf(
 						/* translators: %1$s: the phrase "Add New",
 						 %2$s: Name of current post type. */
-						__("%1$s %2$s", "createwithrani-quick-post-button"),
+						__("%1$s %2$s", "createwithrani-quickpost"),
 						addNewLabel,
 						singleLabel
 					)}
@@ -104,7 +104,7 @@ subscribe(() => {
 		"#createwithrani-add-new-button-wrapper"
 	);
 
-	// If the Quick Post Button already exists, skip render
+	// If the QuickPost Button already exists, skip render
 	// (which we can do because we are finally in a functional call!)
 	if (quickpostbutton) {
 		return;
