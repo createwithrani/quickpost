@@ -1,4 +1,5 @@
 # QuickPost
+_NOT PRODUCTION READY YET_
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-black.svg)](https://github.com/createwithrani/add-new-post/blob/main/license.txt)
 
 ![QuickPost](https://github.com/createwithrani/add-new-post/blob/main/assets/banner-1544x500.png?raw=true)
