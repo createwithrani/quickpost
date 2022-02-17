@@ -35,6 +35,7 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		meta: currentPostData.meta,
 		template: currentPostData.template,
 	};
+	console.log(currentPostData);
 	useEffect(() => {
 		if (0 !== postId) {
 			location.href = addQueryArgs("post.php", {
@@ -60,11 +61,11 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		<MenuGroup>
 			<MenuItem
 				onClick={DuplicateThePost}
-				className="createwithrani-quickpost-duplicate-menu-item"
+				className="createwithrani-quick-post-duplicate-menu-item"
 			>
 				{sprintf(
 					/* translators: %s: singular label of current post type i.e Page, Post */
-					__("Duplicate %s", "createwithrani-quickpost"),
+					__("Duplicate %s", "createwithrani-quick-post-button"),
 					singleLabel
 				)}
 
