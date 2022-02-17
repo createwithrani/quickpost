@@ -1,1 +1,0 @@
-{"version":3,"file":"index.css","mappings":";;;AACC;EACC;AAAF;AACE;EACC;AACH,C","sources":["webpack://quick-post-button/./src/editor.scss"],"sourcesContent":[".createwithrani-quick-post-duplicate-menu-item {\n\t.components-menu-item__item {\n\t\tjustify-content: space-between;\n\t\t.components-spinner {\n\t\t\tmargin: 0;\n\t\t}\n\t}\n}\n"],"names":[],"sourceRoot":""}
