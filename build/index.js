@@ -164,6 +164,7 @@ function DuplicateMenuItem(_ref) {
     meta: currentPostData.meta,
     template: currentPostData.template
   };
+  console.log(currentPostData);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (0 !== postId) {
       location.href = (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_5__.addQueryArgs)("post.php", {

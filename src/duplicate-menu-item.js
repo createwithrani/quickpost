@@ -35,6 +35,7 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		meta: currentPostData.meta,
 		template: currentPostData.template,
 	};
+	console.log(currentPostData);
 	useEffect(() => {
 		if (0 !== postId) {
 			location.href = addQueryArgs("post.php", {
