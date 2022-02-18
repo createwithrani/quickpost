@@ -37,7 +37,10 @@ function QuickPostKebabMenu({ newPost, restBase, singleLabel }) {
 			marginLeft: "-1px",
 			maxHeight: "36px",
 			minHeight: "36px",
+			maxWidth: "36px",
+			minWidth: "36px",
 			display: "block",
+			padding: "0px",
 		},
 	};
 
