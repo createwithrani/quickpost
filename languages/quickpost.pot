@@ -1,8 +1,8 @@
 # Copyright (C) 2022 Aurooba Ahmed
-# This file is distributed under the same license as the Quick Post Button plugin.
+# This file is distributed under the same license as the QuickPost plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Quick Post Button 0.1.0\n"
+"Project-Id-Version: QuickPost 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/quickpost\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,10 +12,10 @@ msgstr ""
 "POT-Creation-Date: 2022-02-17T23:29:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
-"X-Domain: createwithrani-quick-post-button\n"
+"X-Domain: createwithrani-quickpost\n"
 
 #. Plugin Name of the plugin
-msgid "Quick Post Button"
+msgid "QuickPost"
 msgstr ""
 
 #. Plugin URI of the plugin

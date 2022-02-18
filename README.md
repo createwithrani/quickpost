@@ -1,7 +1,9 @@
-# Quick Post Button
+# QuickPost
+_NOT PRODUCTION READY YET_
+
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-black.svg)](https://github.com/createwithrani/add-new-post/blob/main/license.txt)
 
-![Quick Post Button](https://github.com/createwithrani/add-new-post/blob/main/assets/banner-1544x500.png?raw=true)
+![QuickPost](https://github.com/createwithrani/add-new-post/blob/main/assets/banner-1544x500.png?raw=true)
 
 Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor.
 ## Description

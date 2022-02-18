@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
 		addtextdomain: {
 			options: {
-				textdomain: "quick-post-button",
+				textdomain: "quickpost",
 			},
 			update_all_domains: {
 				options: {
@@ -37,8 +37,8 @@ module.exports = function (grunt) {
 				options: {
 					domainPath: "/languages",
 					exclude: [".git/*", "bin/*", "node_modules/*", "tests/*"],
-					mainFile: "quick-post-button.php",
-					potFilename: "quick-post-button.pot",
+					mainFile: "quickpost.php",
+					potFilename: "quickpost.pot",
 					potHeaders: {
 						poedit: true,
 						"x-poedit-keywordslist": true,
