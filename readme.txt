@@ -1,7 +1,7 @@
 === Super List Block ===
 Contributors:      aurooba
 Tags:              add new, gutenberg, add new post, block editor,
-Requires at least: 5.9
+Requires at least: 5.7
 Tested up to:      5.9
 Requires PHP:      7.0
 Stable tag:        0.1.0
@@ -9,11 +9,16 @@ License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Donate link:       https://github.com/sponsors/aurooba
 
-Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor.
+Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor. A kebab menu on the button allows you to duplicate the current post as well.
 
 == Description ==
 
-A razor sharp plugin that does just one thing: add an "Add New" button to the Block Editor toolbar, bringing back the ability to create new posts, pages, custom post types quickly and easily even when you're in Fullscreen Mode in the Editor.
+A razor sharp plugin that does just one thing: allow you to quickly create new posts from the Block Editor toolbar. You can create new posts in one of two ways:
+
+1. Create a brand new empty post.
+2. Duplicate the current post.
+
+This brings back the ability to create new posts, pages, custom post types quickly and easily even when you're in Fullscreen Mode in the Editor.
 
 If you enjoy the plugin, please leave a review! ⭐
 
@@ -23,8 +28,10 @@ If you need support, please use the support forum to reach out. 🆘
 
 === Key Features ===
 
+
 * A disabled button is available in the toolbar in brand new posts
 * The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
+* You can duplicate the current post with two clicks.
 
 ### Upcoming Features
 
@@ -46,8 +53,8 @@ If you need support, please use the support forum to reach out. 🆘
 == Screenshots ==
 
 1. In brand new posts, the `Add New` button is disabled.
-2. In posts that are not new, the `Add New` button is clickable and lets you create new posts right from the Block Editor
-3. Translation ready!
+2. In posts that are not new, the `Add New` button is clickable and lets you create new and duplicate posts right from the Block Editor.
+3. Click the kebab menu button to reveal the `Duplicate Post` button.
 
 == Changelog ==
 
