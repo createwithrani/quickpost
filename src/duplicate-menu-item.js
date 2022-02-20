@@ -3,7 +3,7 @@
  */
 import apiFetch from "@wordpress/api-fetch";
 import { __ } from "@wordpress/i18n";
-import { MenuGroup, MenuItem } from "@wordpress/components";
+import { MenuItem, ToolbarItem } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { useEffect, useState } from "@wordpress/element";
 import { Spinner } from "@wordpress/components";
@@ -35,7 +35,6 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		meta: currentPostData.meta,
 		template: currentPostData.template,
 	};
-	console.log(currentPostData);
 	useEffect(() => {
 		if (0 !== postId) {
 			location.href = addQueryArgs("post.php", {
@@ -58,19 +57,18 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		fetchData();
 	}
 	return (
-		<MenuGroup>
-			<MenuItem
-				onClick={DuplicateThePost}
-				className="createwithrani-quick-post-duplicate-menu-item"
-			>
-				{sprintf(
-					/* translators: %s: singular label of current post type i.e Page, Post */
-					__("Duplicate %s", "createwithrani-quick-post-button"),
-					singleLabel
-				)}
+		<ToolbarItem
+			as={MenuItem}
+			onClick={DuplicateThePost}
+			className="createwithrani-quick-post-duplicate-menu-item"
+		>
+			{sprintf(
+				/* translators: %s: singular label of current post type i.e Page, Post */
+				__("Duplicate %s", "createwithrani-quick-post-button"),
+				singleLabel
+			)}
 
-				{duplicationStatus && <Spinner />}
-			</MenuItem>
-		</MenuGroup>
+			{duplicationStatus && <Spinner />}
+		</ToolbarItem>
 	);
 }
