@@ -27,7 +27,7 @@ subscribe(() => {
 
 	domReady(() => {
 		const editorToolbar = document.querySelector(
-			".edit-post-header-toolbar__left"
+			".edit-post-header__toolbar"
 		);
 
 		// If toolbar doesn't exist, we can't continue
