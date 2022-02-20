@@ -2,7 +2,7 @@
  * WordPress dependencies.
  */
 import { __ } from "@wordpress/i18n";
-import { Button } from "@wordpress/components";
+import { ToolbarButton } from "@wordpress/components";
 import { addQueryArgs } from "@wordpress/url";
 
 /**
@@ -13,7 +13,7 @@ import { addQueryArgs } from "@wordpress/url";
  */
 function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 	return (
-		<Button
+		<ToolbarButton
 			isSecondary
 			id="createwithrani-quick-post-button"
 			style={{
@@ -43,7 +43,7 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 					singleLabel
 				)}
 			</span>
-		</Button>
+		</ToolbarButton>
 	);
 }
 
