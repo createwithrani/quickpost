@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     QuickPost
  * Plugin URI:      https://createwithrani.com
- * Description:     Adds an "Add New" button to the Block Editor toolbar, so you can easily create new posts/pages/custom post types.
+ * Description:     Adds an "Add New" button to the Block Editor toolbar, so you can easily create new posts/pages/custom post types, as well as duplicate them.
  * Author:          Aurooba Ahmed
  * Author URI:      https://aurooba.com
  * Text Domain:     createwithrani-quickpost

@@ -1,6 +1,6 @@
 === Super List Block ===
 Contributors:      aurooba
-Tags:              add new, gutenberg, add new post, block editor,
+Tags:              add new, gutenberg, add new post, block editor, duplicate post, duplicate
 Requires at least: 5.7
 Tested up to:      5.9
 Requires PHP:      7.0
@@ -22,7 +22,7 @@ This brings back the ability to create new posts, pages, custom post types quick
 
 If you enjoy the plugin, please leave a review! ⭐
 
-If you have a feature request, please create an issue in the [GitHub repository](https://github.com/createwithrani/add-new-post). ➕
+If you have a feature request, please create an issue in the [GitHub repository](https://github.com/createwithrani/quickpost). ➕
 
 If you need support, please use the support forum to reach out. 🆘
 
@@ -49,14 +49,21 @@ If you need support, please use the support forum to reach out. 🆘
 2. Activate the plugin through the 'Plugins' screen in WordPress if installed manually or through the WordPress plugins screen.
 3. Use the `Add New` button in the Block Editor toolbar when needed.
 
+== Frequently Asked Questions ==
+= Is this plugin supported? =
+Yes, this plugin is actively supported. If you have a question, issue, or you've identified a bug, please reach out through the support forums.
+= What gets duplicated? =
+Right now all _default_ WordPress post information gets duplicated. Currently, custom taxonomies, Yoast information, or custom additions are not supported. But as the plugin evolves, more support will be added. Please use the support forums to let us know what you'd like added support for.
 
 == Screenshots ==
 
 1. In brand new posts, the `Add New` button is disabled.
 2. In posts that are not new, the `Add New` button is clickable and lets you create new and duplicate posts right from the Block Editor.
 3. Click the kebab menu button to reveal the `Duplicate Post` button.
+4. Clicking the `Add New` button takes you to a fresh new post of the same post type.
 
 == Changelog ==
 
 = 0.1.0 =
+February 21, 2022
 * Release
