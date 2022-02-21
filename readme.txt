@@ -53,7 +53,7 @@ If you need support, please use the support forum to reach out. 🆘
 = Is this plugin supported? =
 Yes, this plugin is actively supported. If you have a question, issue, or you've identified a bug, please reach out through the support forums.
 = What gets duplicated? =
-Right now all _default_ WordPress post information gets duplicated. Currently, custom taxonomies, Yoast information, or custom additions are not supported. But as the plugin evolves, more support will be added. Please use the support forums to let us know what you'd like added support for.
+Right now all _default_ WordPress post information gets duplicated, except featured images. Currently, custom taxonomies, Yoast information, or custom additions are not supported. But as the plugin evolves, more support will be added. Please use the support forums to let us know what you'd like added support for.
 
 == Screenshots ==
 
