@@ -1,4 +1,4 @@
-=== Super List Block ===
+=== QuickPost ===
 Contributors:      aurooba
 Tags:              add new, gutenberg, add new post, block editor, duplicate post, duplicate
 Requires at least: 5.7
