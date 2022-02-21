@@ -38,7 +38,7 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 				{sprintf(
 					/* translators: %1$s: the phrase "Add New",
 						  %2$s: Name of current post type. */
-					__("%1$s %2$s", "createwithrani-quick-post-button"),
+					__("%1$s %2$s", "createwithrani-quickpost"),
 					addNewLabel,
 					singleLabel
 				)}

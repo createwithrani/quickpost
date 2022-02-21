@@ -64,7 +64,7 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		>
 			{sprintf(
 				/* translators: %s: singular label of current post type i.e Page, Post */
-				__("Duplicate %s", "createwithrani-quick-post-button"),
+				__("Duplicate %s", "createwithrani-quickpost"),
 				singleLabel
 			)}
 
