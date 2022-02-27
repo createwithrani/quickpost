@@ -4,7 +4,7 @@ Tags:              add new, gutenberg, add new post, block editor, duplicate pos
 Requires at least: 5.7
 Tested up to:      5.9
 Requires PHP:      7.0
-Stable tag:        0.1.0
+Stable tag:        0.1.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Donate link:       https://github.com/sponsors/aurooba
@@ -63,6 +63,10 @@ Right now all _default_ WordPress post information gets duplicated, except featu
 4. Clicking the `Add New` button takes you to a fresh new post of the same post type.
 
 == Changelog ==
+
+= 0.1.1 =
+February 27, 2022
+* Fixes a small bug that causes a fatal error on installs running PHP versions lower than PHP 7.3
 
 = 0.1.0 =
 February 21, 2022
