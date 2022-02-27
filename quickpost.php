@@ -29,7 +29,7 @@ function createwithrani_quickpost_script() {
 		'createwithrani-quickpost-js',
 		plugins_url( $index_js, __FILE__ ),
 		$asset_file['dependencies'],
-		$asset_file['version'],
+		$asset_file['version']
 	);
 	wp_set_script_translations( 'createwithrani-quickpost-js' );
 	wp_enqueue_style(
