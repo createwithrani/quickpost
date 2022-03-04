@@ -41,7 +41,7 @@ If you need support, please use the support forum to reach out. 🆘
 === Stay Connected ===
 
 * [Follow @aurooba on Twitter](https://twitter.com/aurooba)
-* [View this plugin on GitHub](https://github.com/createwithrani/superlist)
+* [View this plugin on GitHub](https://github.com/createwithrani/quickpost)
 
 == Installation ==
 
