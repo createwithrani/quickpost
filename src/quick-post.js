@@ -1,9 +1,4 @@
 /**
- * WordPress dependencies.
- */
-import { __ } from "@wordpress/i18n";
-
-/**
  * Internal dependencies.
  */
 import { getPostInfo, getPostLabels, getPostTypeRestBase } from "./utils";

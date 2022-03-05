@@ -6,7 +6,6 @@ import classnames from "classnames";
 /**
  * WordPress dependencies.
  */
-import { __ } from "@wordpress/i18n";
 import { ToolbarDropdownMenu } from "@wordpress/components";
 import { moreVertical } from "@wordpress/icons";
 
