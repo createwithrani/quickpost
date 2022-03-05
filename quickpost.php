@@ -25,13 +25,16 @@ function createwithrani_quickpost_script() {
 
 	// automatically load dependencies and version
 	$asset_file = include $dir . '/build/index.asset.php';
-	wp_enqueue_script(
+	wp_register_script(
 		'createwithrani-quickpost-js',
 		plugins_url( $index_js, __FILE__ ),
 		$asset_file['dependencies'],
 		$asset_file['version']
 	);
-	wp_set_script_translations( 'createwithrani-quickpost-js', 'createwithrani-quickpost', plugin_dir_path(__FILE__) . 'languages' );
+	wp_set_script_translations( 'createwithrani-quickpost-js', 'createwithrani-quickpost', plugin_dir_path(__FILE__) . 'languages/' );
+	wp_enqueue_script(
+		'createwithrani-quickpost-js'
+	);
 	wp_enqueue_style(
 		'createwithrani-quickpost-style',
 		plugins_url( $index_css, __FILE__ ),
@@ -41,3 +44,4 @@ function createwithrani_quickpost_script() {
 }
 
 add_action( 'enqueue_block_editor_assets', 'createwithrani_quickpost_script' );
+add_action( 'init', 'createwithrani_quickpost_script' );
