@@ -31,7 +31,7 @@ function createwithrani_quickpost_script() {
 		$asset_file['dependencies'],
 		$asset_file['version']
 	);
-	wp_set_script_translations( 'createwithrani-quickpost-js' );
+	wp_set_script_translations( 'createwithrani-quickpost-js', 'createwithrani-quickpost', plugin_dir_path(__FILE__) . 'languages' );
 	wp_enqueue_style(
 		'createwithrani-quickpost-style',
 		plugins_url( $index_css, __FILE__ ),
