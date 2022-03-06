@@ -18,7 +18,7 @@ This brings back the ability to create new posts, pages, custom post types quick
 
 If you enjoy the plugin, please leave a review! ⭐
 
-If you have a feature request, please create an issue in the [GitHub repository](https://github.com/createwithrani/add-new-post). ➕
+If you have a feature request, please create an issue in the [GitHub repository](https://github.com/createwithrani/quickpost). ➕
 
 If you need support, please use the support forum to reach out. 🆘
 
