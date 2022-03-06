@@ -36,7 +36,7 @@ If you need support, please use the support forum to reach out. 🆘
 
 ## Filtering QuickPost Visibility
 
-As of v0.1.3, you can filter the visibilty of the entire QuickPost button using the filter `QuickPostDisplay`. QuickPost has a property called `visibility`, which you can set to `true` or `false` depending on a condition of your choosing.
+As of v0.1.2, you can filter the visibilty of the entire QuickPost button using the filter `QuickPost.Display`. QuickPost has a property called `visibility`, which you can set to `true` or `false` depending on a condition of your choosing.
 
 ### Example: Only allow Administrators to see the button:
 
@@ -65,7 +65,7 @@ function onlyAdmins(FilteredComponent) {
 }
 
 addFilter(
-	"QuickPostDisplay",
+	"QuickPost.Display",
 	"my-plugin/only-admins-quickpost",
 	onlyAdmins
 );
