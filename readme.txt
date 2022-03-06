@@ -36,7 +36,6 @@ If you need support, please use the support forum to reach out. 🆘
 ### Upcoming Features
 
 * A handy shortcut to create new posts from your keyboard when in the block editor
-* Developers: the ability to filter the button's visibility
 
 === Stay Connected ===
 
@@ -54,6 +53,8 @@ If you need support, please use the support forum to reach out. 🆘
 Yes, this plugin is actively supported. If you have a question, issue, or you've identified a bug, please reach out through the support forums.
 = What gets duplicated? =
 Right now all _default_ WordPress post information gets duplicated, except featured images. Currently, custom taxonomies, Yoast information, or custom additions are not supported. But as the plugin evolves, more support will be added. Please use the support forums to let us know what you'd like added support for.
+= How can I change when QuickPost is available? =
+The plugin provides a filter called `QuickPostDisplay` to help you affect QuickPost's visibility. Refer to the example in the [README on GitHub](https://github.com/createwithrani/quickpost/tree/main#filtering-quickpost-visibilitys).
 
 == Screenshots ==
 
@@ -64,10 +65,10 @@ Right now all _default_ WordPress post information gets duplicated, except featu
 
 == Changelog ==
 
-= 0.1.1 =
-February 27, 2022
+= 0.1.1 - February 27, 2022 =
+
 * Fixes a small bug that causes a fatal error on installs running PHP versions lower than PHP 7.3
 
-= 0.1.0 =
-February 21, 2022
+= 0.1.0 - February 21, 2022 =
+
 * Release

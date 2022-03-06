@@ -44,7 +44,7 @@ subscribe(() => {
 		editorToolbar.appendChild(buttonWrapper);
 
 		render(
-			<QuickPostButton />,
+			<QuickPostButton visibility={true} />,
 			document.getElementById("createwithrani-quick-post-button-wrapper")
 		);
 	});

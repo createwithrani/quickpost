@@ -5,7 +5,7 @@
 ![QuickPost](https://github.com/createwithrani/add-new-post/blob/main/assets/banner-1544x500.png?raw=true)
 
 Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor. A kebab menu on the button allows you to duplicate the current post as well.
-## Description
+## About
 
 A razor sharp plugin that does just one thing: allow you to quickly create new posts from the Block Editor toolbar. You can create new posts in one of two ways:
 
@@ -20,7 +20,7 @@ If you have a feature request, please create an issue in the [GitHub repository]
 
 If you need support, please use the support forum to reach out. 🆘
 
-## Key Features
+### Key Features
 
 * A disabled button is available in the toolbar in brand new posts
 * The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
@@ -29,11 +29,46 @@ If you need support, please use the support forum to reach out. 🆘
 ### Upcoming Features
 
 * A handy shortcut to create new posts from your keyboard when in the block editor
-* Developers: the ability to filter the button's visibility
-## Requirements
+### Requirements
 
 - WordPress 5.8+
 - PHP 7.0+
 
+## Filtering QuickPost Visibility
+
+As of v0.1.2, you can filter the visibilty of the entire QuickPost button using the filter `QuickPost.Display`. QuickPost has a property called `visibility`, which you can set to `true` or `false` depending on a condition of your choosing.
+
+### Example: Only allow Administrators to see the button:
+
+```js
+import { addFilter } from "@wordpress/hooks";
+import { useSelect } from "@wordpress/data";
+import { store as coreStore } from "@wordpress/core-data";
+
+function onlyAdmins(FilteredComponent) {
+	const adminUser = () => {
+		const { isAdmin } = useSelect((select) => {
+			const { canUser } = select(coreStore);
+			// check if current user can create users, because only admins can do that
+			const isAdmin = canUser("create", "users"); // returns undefined, true, or false
+			return {
+				isAdmin: isAdmin,
+			};
+		});
+		return isAdmin;
+	};
+	return (props) => (
+		<>
+			<FilteredComponent {...props} visibility={adminUser()} />
+		</>
+	);
+}
+
+addFilter(
+	"QuickPost.Display",
+	"my-plugin/only-admins-quickpost",
+	onlyAdmins
+);
+```
 ## Thanks these lovely humans!
 This was an odd duck, although relatively easy to make. I truly appreciate people taking time out of their day to test and give me feedback so I could make this tiny but handy plugin great. Major props to @sc0ttkclark, @treadlightly, and @christinaworkman for all their help! 💟
