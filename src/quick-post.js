@@ -43,7 +43,7 @@ function QuickPostButton({ visibility }) {
 	}
 	return null;
 }
-const QuickPostButtoWithFilters = withFilters("QuickPostDisplay")(
+const QuickPostButtoWithFilters = withFilters("QuickPost.Display")(
 	QuickPostButton
 );
 export default QuickPostButtoWithFilters;
