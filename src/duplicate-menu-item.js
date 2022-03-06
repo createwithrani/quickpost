@@ -59,7 +59,11 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 						action: "edit",
 					})}
 				>
-					View Post
+					{sprintf(
+						/* translators: %s: singular label of current post type i.e Page, Post */
+						__("View %s", "createwithrani-quickpost"),
+						singleLabel
+					)}
 				</a>
 			</div>
 		);
