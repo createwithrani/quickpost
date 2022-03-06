@@ -5,7 +5,7 @@ import apiFetch from "@wordpress/api-fetch";
 import { __ } from "@wordpress/i18n";
 import { MenuItem, ToolbarItem } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
-import { useEffect, useState } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { Spinner } from "@wordpress/components";
 import { addQueryArgs } from "@wordpress/url";
 
@@ -35,18 +35,6 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		meta: currentPostData.meta,
 		template: currentPostData.template,
 	};
-	useEffect(() => {
-		if (0 !== postId) {
-			window.open(
-				addQueryArgs("post.php", {
-					post: postId,
-					action: "edit",
-				}),
-				"_blank"
-			);
-			setDuplicationStatus(false);
-		}
-	}, [postId]);
 
 	const fetchData = async () => {
 		const response = await apiFetch({
@@ -55,24 +43,43 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 			data: DuplicatePost,
 		});
 		setPostId(response.id);
+		setDuplicationStatus(false);
 	};
 	function DuplicateThePost() {
 		setDuplicationStatus(true);
 		fetchData();
 	}
-	return (
-		<ToolbarItem
-			as={MenuItem}
-			onClick={DuplicateThePost}
-			className="createwithrani-quick-post-duplicate-menu-item"
-		>
-			{sprintf(
-				/* translators: %s: singular label of current post type i.e Page, Post */
-				__("Duplicate %s", "createwithrani-quickpost"),
-				singleLabel
-			)}
 
-			{duplicationStatus && <Spinner />}
-		</ToolbarItem>
+	const ViewDuplicatedPost = () => {
+		return (
+			<div>
+				<a
+					href={addQueryArgs("post.php", {
+						post: postId,
+						action: "edit",
+					})}
+				>
+					View Post
+				</a>
+			</div>
+		);
+	};
+	return (
+		<>
+			<ToolbarItem
+				as={MenuItem}
+				className="createwithrani-quick-post-duplicate-menu-item"
+			>
+				<span onClick={DuplicateThePost}>
+					{sprintf(
+						/* translators: %s: singular label of current post type i.e Page, Post */
+						__("Duplicate %s", "createwithrani-quickpost"),
+						singleLabel
+					)}
+				</span>
+				{0 !== postId && <ViewDuplicatedPost />}
+				{duplicationStatus && <Spinner />}
+			</ToolbarItem>
+		</>
 	);
 }
