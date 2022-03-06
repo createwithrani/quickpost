@@ -37,10 +37,14 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 	};
 	useEffect(() => {
 		if (0 !== postId) {
-			location.href = addQueryArgs("post.php", {
-				post: postId,
-				action: "edit",
-			});
+			window.open(
+				addQueryArgs("post.php", {
+					post: postId,
+					action: "edit",
+				}),
+				"_blank"
+			);
+			setDuplicationStatus(false);
 		}
 	}, [postId]);
 
