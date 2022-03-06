@@ -7,6 +7,8 @@
 Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor. A kebab menu on the button allows you to duplicate the current post as well.
 ## About
 
+Download the latest version of the plugin from [WordPress.org](https://wordpress.org/plugins/quickpost/) or from the [Latest Release area](https://github.com/createwithrani/quickpost/releases/tag/v0.1.1).
+
 A razor sharp plugin that does just one thing: allow you to quickly create new posts from the Block Editor toolbar. You can create new posts in one of two ways:
 
 1. Create a brand new empty post.
