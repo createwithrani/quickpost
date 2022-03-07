@@ -53,22 +53,18 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 	const ViewDuplicatedPost = () => {
 		return (
 			<ToolbarItem
-				as={MenuItem}
-				className="createwithrani-quick-post-duplicate-menu-item"
+				as="a"
+				href={addQueryArgs("post.php", {
+					post: postId,
+					action: "edit",
+				})}
+				className="components-button components-dropdown-menu__toggle is-secondary"
 			>
 				{sprintf(
 					/* translators: %s: singular label of current post type i.e Page, Post */
-					__("%s duplicated", "createwithrani-quickpost"),
+					__("View duplicated %s", "createwithrani-quickpost"),
 					singleLabel
 				)}
-				<a
-					href={addQueryArgs("post.php", {
-						post: postId,
-						action: "edit",
-					})}
-				>
-					{__("View", "createwithrani-quickpost")}
-				</a>
 			</ToolbarItem>
 		);
 	};
