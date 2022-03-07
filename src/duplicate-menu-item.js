@@ -72,23 +72,26 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 			</ToolbarItem>
 		);
 	};
+	const DuplicatePostButton = () => {
+		return (
+			<ToolbarItem
+				onClick={DuplicateThePost}
+				as={MenuItem}
+				className="createwithrani-quick-post-duplicate-menu-item"
+			>
+				{sprintf(
+					/* translators: %s: singular label of current post type i.e Page, Post */
+					__("Duplicate %s", "createwithrani-quickpost"),
+					singleLabel
+				)}
+
+				{duplicationStatus && <Spinner />}
+			</ToolbarItem>
+		);
+	};
 	return (
 		<>
-			{0 === postId && (
-				<ToolbarItem
-					onClick={DuplicateThePost}
-					as={MenuItem}
-					className="createwithrani-quick-post-duplicate-menu-item"
-				>
-					{sprintf(
-						/* translators: %s: singular label of current post type i.e Page, Post */
-						__("Duplicate %s", "createwithrani-quickpost"),
-						singleLabel
-					)}
-
-					{duplicationStatus && <Spinner />}
-				</ToolbarItem>
-			)}
+			{0 === postId && <DuplicatePostButton />}
 			{0 !== postId && <ViewDuplicatedPost />}
 		</>
 	);
