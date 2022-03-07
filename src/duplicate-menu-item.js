@@ -52,38 +52,44 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 
 	const ViewDuplicatedPost = () => {
 		return (
-			<div>
+			<ToolbarItem
+				as={MenuItem}
+				className="createwithrani-quick-post-duplicate-menu-item"
+			>
+				{sprintf(
+					/* translators: %s: singular label of current post type i.e Page, Post */
+					__("%s duplicated", "createwithrani-quickpost"),
+					singleLabel
+				)}
 				<a
 					href={addQueryArgs("post.php", {
 						post: postId,
 						action: "edit",
 					})}
 				>
-					{sprintf(
-						/* translators: %s: singular label of current post type i.e Page, Post */
-						__("View %s", "createwithrani-quickpost"),
-						singleLabel
-					)}
+					{__("View", "createwithrani-quickpost")}
 				</a>
-			</div>
+			</ToolbarItem>
 		);
 	};
 	return (
 		<>
-			<ToolbarItem
-				as={MenuItem}
-				className="createwithrani-quick-post-duplicate-menu-item"
-			>
-				<span onClick={DuplicateThePost}>
+			{0 === postId && (
+				<ToolbarItem
+					onClick={DuplicateThePost}
+					as={MenuItem}
+					className="createwithrani-quick-post-duplicate-menu-item"
+				>
 					{sprintf(
 						/* translators: %s: singular label of current post type i.e Page, Post */
 						__("Duplicate %s", "createwithrani-quickpost"),
 						singleLabel
 					)}
-				</span>
-				{0 !== postId && <ViewDuplicatedPost />}
-				{duplicationStatus && <Spinner />}
-			</ToolbarItem>
+
+					{duplicationStatus && <Spinner />}
+				</ToolbarItem>
+			)}
+			{0 !== postId && <ViewDuplicatedPost />}
 		</>
 	);
 }
