@@ -5,7 +5,7 @@ import apiFetch from "@wordpress/api-fetch";
 import { __ } from "@wordpress/i18n";
 import { MenuItem, ToolbarItem } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
-import { useEffect, useState } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { Spinner } from "@wordpress/components";
 import { addQueryArgs } from "@wordpress/url";
 
@@ -35,14 +35,6 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 		meta: currentPostData.meta,
 		template: currentPostData.template,
 	};
-	useEffect(() => {
-		if (0 !== postId) {
-			location.href = addQueryArgs("post.php", {
-				post: postId,
-				action: "edit",
-			});
-		}
-	}, [postId]);
 
 	const fetchData = async () => {
 		const response = await apiFetch({
@@ -51,24 +43,52 @@ export function DuplicateMenuItem({ singleLabel, restBase }) {
 			data: DuplicatePost,
 		});
 		setPostId(response.id);
+		setDuplicationStatus(false);
 	};
 	function DuplicateThePost() {
 		setDuplicationStatus(true);
 		fetchData();
 	}
-	return (
-		<ToolbarItem
-			as={MenuItem}
-			onClick={DuplicateThePost}
-			className="createwithrani-quick-post-duplicate-menu-item"
-		>
-			{sprintf(
-				/* translators: %s: singular label of current post type i.e Page, Post */
-				__("Duplicate %s", "createwithrani-quickpost"),
-				singleLabel
-			)}
 
-			{duplicationStatus && <Spinner />}
-		</ToolbarItem>
+	const ViewDuplicatedPost = () => {
+		return (
+			<ToolbarItem
+				as="a"
+				href={addQueryArgs("post.php", {
+					post: postId,
+					action: "edit",
+				})}
+				className="components-button components-dropdown-menu__toggle is-secondary"
+			>
+				{sprintf(
+					/* translators: %s: singular label of current post type i.e Page, Post */
+					__("Edit duplicated %s", "createwithrani-quickpost"),
+					singleLabel
+				)}
+			</ToolbarItem>
+		);
+	};
+	const DuplicatePostButton = () => {
+		return (
+			<ToolbarItem
+				onClick={DuplicateThePost}
+				as={MenuItem}
+				className="createwithrani-quick-post-duplicate-menu-item"
+			>
+				{sprintf(
+					/* translators: %s: singular label of current post type i.e Page, Post */
+					__("Duplicate %s", "createwithrani-quickpost"),
+					singleLabel
+				)}
+
+				{duplicationStatus && <Spinner />}
+			</ToolbarItem>
+		);
+	};
+	return (
+		<>
+			{0 === postId && <DuplicatePostButton />}
+			{0 !== postId && <ViewDuplicatedPost />}
+		</>
 	);
 }

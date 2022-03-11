@@ -13,8 +13,8 @@ import { addQueryArgs } from "@wordpress/url";
  */
 function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 	return (
-		<ToolbarButton
-			isSecondary
+		<a
+			className="components-button components-toolbar__control is-secondary"
 			id="createwithrani-quick-post-button"
 			style={{
 				textTransform: "capitalize",
@@ -26,13 +26,12 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 				borderTopRightRadius: "0px",
 				borderBottomRightRadius: "0px",
 			}}
+			role="link"
 			disabled={!newPost}
 			aria-disabled={!newPost}
-			onClick={() =>
-				(location.href = addQueryArgs("post-new.php", {
-					post_type: postType,
-				}))
-			}
+			href={addQueryArgs("post-new.php", {
+				post_type: postType,
+			})}
 		>
 			<span>
 				{sprintf(
@@ -41,7 +40,7 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 					singleLabel
 				)}
 			</span>
-		</ToolbarButton>
+		</a>
 	);
 }
 
