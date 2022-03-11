@@ -6,7 +6,7 @@ import classnames from "classnames";
 /**
  * WordPress dependencies.
  */
-import { ToolbarDropdownMenu } from "@wordpress/components";
+import { DropdownMenu } from "@wordpress/components";
 import { moreVertical } from "@wordpress/icons";
 
 /**
@@ -45,7 +45,7 @@ function QuickPostKebabMenu({ newPost, restBase, singleLabel }) {
 
 	return (
 		<>
-			<ToolbarDropdownMenu
+			<DropdownMenu
 				className="createwithrani-quick-post-kebab"
 				popoverProps={POPOVER_PROPS}
 				toggleProps={toggleProps}
@@ -57,7 +57,7 @@ function QuickPostKebabMenu({ newPost, restBase, singleLabel }) {
 						restBase={restBase}
 					/>
 				)}
-			</ToolbarDropdownMenu>
+			</DropdownMenu>
 		</>
 	);
 }
