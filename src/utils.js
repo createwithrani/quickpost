@@ -30,11 +30,11 @@ export function getPostLabels(postType) {
 	const { singleLabel, addNewLabel } = useSelect((select) => {
 		const { getPostTypes } = select(coreStore);
 		const includedPostType = [postType];
-		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
-			({ viewable, slug }) => viewable && includedPostType.includes(slug)
-		);
+		const filteredPostTypes = getPostTypes({
+			per_page: -1,
+		})?.filter(({ slug }) => includedPostType.includes(slug));
 
-		if (undefined !== filteredPostTypes) {
+		if (undefined !== filteredPostTypes && filteredPostTypes.length) {
 			return {
 				addNewLabel: filteredPostTypes[0].labels.add_new,
 				singleLabel: filteredPostTypes[0].labels.singular_name,
@@ -53,11 +53,11 @@ export function getPostTypeRestBase(postType) {
 	const { rest_base } = useSelect((select) => {
 		const { getPostTypes } = select(coreStore);
 		const includedPostType = [postType];
-		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
-			({ viewable, slug }) => viewable && includedPostType.includes(slug)
-		);
+		const filteredPostTypes = getPostTypes({
+			per_page: -1,
+		})?.filter(({ slug }) => includedPostType.includes(slug));
 
-		if (undefined !== filteredPostTypes) {
+		if (undefined !== filteredPostTypes && filteredPostTypes.length) {
 			return {
 				rest_base: filteredPostTypes[0].rest_base,
 			};
