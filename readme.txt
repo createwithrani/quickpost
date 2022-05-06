@@ -4,7 +4,7 @@ Tags:              add new, gutenberg, add new post, block editor, duplicate pos
 Requires at least: 5.7
 Tested up to:      5.9
 Requires PHP:      7.0
-Stable tag:        0.1.2
+Stable tag:        0.1.3
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Donate link:       https://github.com/sponsors/aurooba
@@ -64,6 +64,10 @@ The plugin provides a filter called `QuickPostDisplay` to help you affect QuickP
 4. Clicking the `Add New` button takes you to a fresh new post of the same post type.
 
 == Changelog ==
+
+= 0.1.3 - May 6, 2022 =
+
+* FIX: the `common.min.css` file was getting enqueued unnecessarily to the front-end, this fixes that. Thanks for the report [@mrwweb](https://profiles.wordpress.org/mrwweb/)!
 
 = 0.1.2 - May 1, 2022 =
 
