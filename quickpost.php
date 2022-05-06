@@ -44,3 +44,4 @@ function createwithrani_quickpost_script() {
 }
 
 add_action( 'enqueue_block_editor_assets', 'createwithrani_quickpost_script' );
+add_action( 'init', 'createwithrani_quickpost_script' );
