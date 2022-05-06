@@ -72,7 +72,6 @@ subscribe(() => {
 		// using dangerouslySetInnerHTML, which..I don't want to use.
 		const viewButtonWrapper = document.createElement("div");
 		viewButtonWrapper.id = "createwithrani-quick-post-view-button-wrapper";
-		viewButtonWrapper.style.cssText = "display:flex;";
 
 		// add empty div to the toolbar so we can fill it.
 		editorToolbar.appendChild(viewButtonWrapper);

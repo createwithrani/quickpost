@@ -13,6 +13,7 @@ import { moreVertical } from "@wordpress/icons";
  * Internal dependencies.
  */
 import { DuplicateMenuItem } from "./duplicate-menu-item";
+import { ViewPostMenuItem } from "./view-post-menu-item";
 import "./editor.scss";
 
 const POPOVER_PROPS = {
@@ -52,10 +53,13 @@ function QuickPostKebabMenu({ newPost, restBase, singleLabel }) {
 				icon={moreVertical}
 			>
 				{() => (
-					<DuplicateMenuItem
-						singleLabel={singleLabel}
-						restBase={restBase}
-					/>
+					<>
+						<DuplicateMenuItem
+							singleLabel={singleLabel}
+							restBase={restBase}
+						/>
+						<ViewPostMenuItem />
+					</>
 				)}
 			</DropdownMenu>
 		</>
