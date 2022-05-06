@@ -1,4 +1,4 @@
-# QuickPost
+# QuickPost - Add New Posts & Duplicate from the Block Editor
 
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-black.svg)](https://github.com/createwithrani/add-new-post/blob/main/license.txt)
 

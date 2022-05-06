@@ -1,10 +1,10 @@
-=== QuickPost ===
+=== QuickPost - Add New Posts & Duplicate from the Block Editor ===
 Contributors:      aurooba, pixolin
 Tags:              add new, gutenberg, add new post, block editor, duplicate post, duplicate
 Requires at least: 5.7
 Tested up to:      5.9
 Requires PHP:      7.0
-Stable tag:        0.1.1
+Stable tag:        0.1.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Donate link:       https://github.com/sponsors/aurooba
@@ -64,6 +64,13 @@ The plugin provides a filter called `QuickPostDisplay` to help you affect QuickP
 4. Clicking the `Add New` button takes you to a fresh new post of the same post type.
 
 == Changelog ==
+
+= 0.1.2 - May 1, 2022 =
+
+* NEW FEATURE: You can filter the visibilty of the entire QuickPost button using the filter `QuickPost.Display`. QuickPost has a property called `visibilit`y, which you can set to `true` or `false` depending on a condition of your choosing.
+* ENHANCEMENT: The `Add New` button into a true semantic link to allow folks to open the new post in the current tab/window, new tab, or new window.
+* ENHANCEMENT: When you choose to duplicate a post, on success, not only does the entire menu item transforms into a semantic link (for the same benefits as the `add new` button transformation, but also with the call to action `Edit duplicated {post type label}`, to correctly indicate they'll be taken to the editor for the newly duplicated post.
+* FIX: the translations weren't working correctly because of an incorrectly enqueued file, that's been fixed.
 
 = 0.1.1 - February 27, 2022 =
 
