@@ -11,19 +11,20 @@ import { store as coreStore } from "@wordpress/core-data";
  *	2. Is this a new post? – because if it's brand new, we don't want our button to be active, yer already in a new post, bud.
  */
 export function getPostInfo() {
-	const { postType, newPost, link, status } = useSelect((select) => {
+	const { postType, newPost, link, status, loading } = useSelect((select) => {
 		const newPost = select("core/editor").isEditedPostSaveable();
 		const postType = select("core/editor").getCurrentPostType();
 		const currentPostData = select("core/editor").getCurrentPost();
-
+		const _isLoaded = !!currentPostData.id;
 		return {
 			newPost: newPost,
 			postType: postType,
 			link: currentPostData.link,
 			status: currentPostData.status,
+			loading: _isLoaded,
 		};
 	});
-	return { postType, newPost, link, status };
+	return { postType, newPost, link, status, loading };
 }
 
 export function getPostLabels(postType) {

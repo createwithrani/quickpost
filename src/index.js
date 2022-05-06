@@ -63,7 +63,6 @@ subscribe(() => {
 
 	domReady(() => {
 		const editorToolbar = document.querySelector(".edit-post-header");
-
 		// If toolbar doesn't exist, we can't continue
 		if (!editorToolbar) {
 			return;

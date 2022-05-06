@@ -41,18 +41,52 @@ import { getPostTitle, getPostInfo } from "./utils";
  * @param {boolean}  props.showIconLabels Whether buttons display icons or text labels.
  */
 export default function QuickPostViewButton() {
+	const { postType, link, status, loading } = getPostInfo();
 	const entityTitle = getPostTitle();
-	const { postType, newPost, link, status } = getPostInfo();
+	const isLoaded = loading;
 	// The title ref is passed to the popover as the anchorRef so that the
 	// dropdown is centered over the whole title area rather than just one
 	// part of it.
 	const titleRef = useRef();
+
+	// Return a simple loading indicator until we have information to show.
+	if (!isLoaded) {
+		return <div className="quick-post-view-button">{__("Loading…")}</div>;
+	}
 
 	// Return feedback that the post title doesn't exist yet
 	if (!entityTitle) {
 		return <div className="quick-post-view-button">{__("Untitled")}</div>;
 	}
 
+	const TitleDropdown = () => {
+		return (
+			<Dropdown
+				popoverProps={{
+					anchorRef: titleRef.current,
+					position: "bottom center",
+				}}
+				renderToggle={({ isOpen, onToggle }) => (
+					<Button
+						className="quick-post-view-button__get-info"
+						icon={chevronDown}
+						aria-expanded={isOpen}
+						aria-haspopup="true"
+						onClick={onToggle}
+						label={sprintf(
+							/* translators: %s: the entity to see details about, like "post"*/
+							__("Show %s details"),
+							postType
+						)}
+					/>
+				)}
+				contentClassName="quick-post-view-button__info-dropdown"
+				renderContent={() => (
+					<ExternalLink href={link}>{__("View Post")}</ExternalLink>
+				)}
+			/>
+		);
+	};
 	return (
 		<div className={classnames("quick-post-view-button")}>
 			<div
@@ -73,34 +107,7 @@ export default function QuickPostViewButton() {
 					</VisuallyHidden>
 					{entityTitle}
 				</Text>
-				{status && status === "publish" && (
-					<Dropdown
-						popoverProps={{
-							anchorRef: titleRef.current,
-							position: "bottom center",
-						}}
-						renderToggle={({ isOpen, onToggle }) => (
-							<Button
-								className="quick-post-view-button__get-info"
-								icon={chevronDown}
-								aria-expanded={isOpen}
-								aria-haspopup="true"
-								onClick={onToggle}
-								label={sprintf(
-									/* translators: %s: the entity to see details about, like "post"*/
-									__("Show %s details"),
-									postType
-								)}
-							/>
-						)}
-						contentClassName="quick-post-view-button__info-dropdown"
-						renderContent={() => (
-							<ExternalLink href={link}>
-								{__("View Post")}
-							</ExternalLink>
-						)}
-					/>
-				)}
+				{status && status === "publish" && <TitleDropdown />}
 			</div>
 		</div>
 	);
