@@ -7,6 +7,26 @@
 	}
 }
 
-.edit-post-header__toolbar .edit-post-header-toolbar {
-	flex-grow: 0;
+.edit-post-header__toolbar, .edit-post-header__toolbar .edit-post-header-toolbar {
+	flex-grow: 0 !important;
+}
+
+.edit-post-header>.edit-post-header__settings {
+	order: 3 !important;
+}
+
+#createwithrani-quick-post-view-button-wrapper {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	.quick-post-view-button__title-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.quick-post-view-button__info-dropdown>.components-popover__content>div {
+	min-width: 240px;
+	padding: 1rem;
 }
