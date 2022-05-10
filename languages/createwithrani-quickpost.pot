@@ -2,17 +2,17 @@
 # This file is distributed under the same license as the QuickPost plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: QuickPost 0.1.1\n"
+"Project-Id-Version: QuickPost 0.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/quickpost\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-05T05:09:30+00:00\n"
+"POT-Creation-Date: 2022-05-06T15:27:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
-"X-Domain: quickpost\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: createwithrani-quickpost\n"
 
 #. Plugin Name of the plugin
 msgid "QuickPost"
@@ -34,16 +34,23 @@ msgstr ""
 msgid "https://aurooba.com"
 msgstr ""
 
-#. translators: %1$s: the phrase "Add New", %2$s: Name of current post type.
+#. translators: %1$s: Name of current post type.
 #: build/index.js:92
-#: src/add-button.js:41
-#: build/index.js:55
-msgid "%1$s %2$s"
+#: src/add-button.js:39
+#: build/index.js:53
+msgid "Add new %1$s"
 msgstr ""
 
 #. translators: %s: singular label of current post type i.e Page, Post
-#: build/index.js:196
-#: src/duplicate-menu-item.js:67
-#: build/index.js:132
+#: build/index.js:193
+#: src/duplicate-menu-item.js:65
+#: build/index.js:127
+msgid "Edit duplicated %s"
+msgstr ""
+
+#. translators: %s: singular label of current post type i.e Page, Post
+#: build/index.js:203
+#: src/duplicate-menu-item.js:80
+#: build/index.js:142
 msgid "Duplicate %s"
 msgstr ""
