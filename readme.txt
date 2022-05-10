@@ -4,7 +4,7 @@ Tags:              add new, gutenberg, add new post, block editor, duplicate pos
 Requires at least: 5.7
 Tested up to:      5.9
 Requires PHP:      7.0
-Stable tag:        0.1.3.1
+Stable tag:        0.1.4
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Donate link:       https://github.com/sponsors/aurooba
@@ -65,7 +65,7 @@ The plugin provides a filter called `QuickPostDisplay` to help you affect QuickP
 
 == Changelog ==
 
-= 0.1.3.1 - May 6, 2022 =
+= 0.1.4 - May 10, 2022 =
 
 * Looks like the last release didn't get pushed correctly, so this is a push to actually fix the `common.min.css` problem.
 
