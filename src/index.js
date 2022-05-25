@@ -9,6 +9,7 @@ import domReady from "@wordpress/dom-ready";
  * Internal dependencies.
  */
 import QuickPostButton from "./quick-post";
+import { listenForKeyboardShortcut } from "./utils";
 
 /**
  * Let's subscribe (because I finally understand what this does better)
@@ -49,3 +50,5 @@ subscribe(() => {
 		);
 	});
 });
+
+document.addEventListener('keydown', listenForKeyboardShortcut);
