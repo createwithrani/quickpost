@@ -2,7 +2,7 @@
 Contributors:      aurooba, pixolin
 Tags:              add new, gutenberg, add new post, block editor, duplicate post, duplicate
 Requires at least: 5.7
-Tested up to:      5.9
+Tested up to:      6.0
 Requires PHP:      7.0
 Stable tag:        0.1.4
 License:           GPL-2.0-or-later
