@@ -27,10 +27,8 @@ If you need support, please use the support forum to reach out. 🆘
 * A disabled button is available in the toolbar in brand new posts
 * The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
 * You can duplicate the current post with two clicks.
+* A keyboard shortcut to create a new post directly from your keyboard (Ctrl + Option + N on Mac or Alt + Shift + N on Windows)
 
-### Upcoming Features
-
-* A handy shortcut to create new posts from your keyboard when in the block editor
 ### Requirements
 
 - WordPress 5.8+

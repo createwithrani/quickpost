@@ -69,3 +69,15 @@ export function getPostTypeRestBase(postType) {
 	});
 	return rest_base;
 }
+
+export function listenForKeyboardShortcut(event) {
+	if (
+		// Shortcut for Mac (Ctrl + Option + N)
+		(event.ctrlKey && event.altKey && 78 === event.keyCode) ||
+		// Shortcut for Windows (Alt + Shift + N)
+		(event.altKey && event.shiftKey && 78 === event.keyCode)
+	) {
+        event.preventDefault();
+    	document.querySelector('#createwithrani-quick-post-button').click();
+    }
+}
