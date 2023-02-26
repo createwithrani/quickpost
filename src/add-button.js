@@ -2,8 +2,9 @@
  * WordPress dependencies.
  */
 import { __ } from "@wordpress/i18n";
-import { Tooltip } from "@wordpress/components";
+import { Tooltip, Spinner } from "@wordpress/components";
 import { addQueryArgs } from "@wordpress/url";
+import { useState } from "@wordpress/element";
 
 /**
  * Create the Quick Post Button we will add to the Block Editor Toolbar
@@ -12,6 +13,7 @@ import { addQueryArgs } from "@wordpress/url";
  * @return {string} Return the rendered Quick Post Button
  */
 function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
+	const [click, setClick] = useState(false);
 	const platform =
 		navigator?.userAgentData?.platform || navigator?.platform || "unknown";
 	const isMac = platform.indexOf("Mac") > -1;
@@ -50,6 +52,7 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 				href={addQueryArgs("post-new.php", {
 					post_type: postType,
 				})}
+				onClick={() => setClick(true)}
 			>
 				<span>
 					{sprintf(
@@ -58,6 +61,7 @@ function AddNewPostButton({ postType, newPost, addNewLabel, singleLabel }) {
 						singleLabel
 					)}
 				</span>
+				{click && <Spinner />}
 			</a>
 		</Tooltip>
 	);
