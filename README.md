@@ -72,3 +72,6 @@ addFilter(
 ```
 ## Thanks these lovely humans!
 This was an odd duck, although relatively easy to make. I truly appreciate people taking time out of their day to test and give me feedback so I could make this tiny but handy plugin great. Major props to @sc0ttkclark, @treadlightly, and @christinaworkman for all their help! 💟
+
+## Contributors
+@aurooba, @pixolin, @kkoppenhaver
