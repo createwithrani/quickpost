@@ -5,7 +5,7 @@ import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 
-/*
+/**
  * 	We need to know two things:
  * 	1. What post type are we in – so we can set up the URL to create a new post of the same type
  *	2. Is this a new post? – because if it's brand new, we don't want our button to be active, yer already in a new post, bud.
@@ -77,7 +77,7 @@ export function listenForKeyboardShortcut(event) {
 		// Shortcut for Windows (Alt + Shift + N)
 		(event.altKey && event.shiftKey && 78 === event.keyCode)
 	) {
-        event.preventDefault();
-    	document.querySelector('#createwithrani-quick-post-button').click();
-    }
+		event.preventDefault();
+		document.querySelector("#createwithrani-quick-post-button").click();
+	}
 }
