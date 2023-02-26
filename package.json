@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": "Aurooba Ahmed",
   "scripts": {
-    "start": "grunt default",
+    "start": "wp-scripts start",
     "readme": "grunt readme",
     "i18n": "grunt i18n",
     "build": "wp-scripts build",
