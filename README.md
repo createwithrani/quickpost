@@ -5,6 +5,7 @@
 ![QuickPost](https://github.com/createwithrani/add-new-post/blob/main/assets/banner-1544x500.png?raw=true)
 
 Adds an "Add New" button to the Block Editor (Gutenberg) toolbar, so you can easily create new posts/pages/custom post types without leaving Fullscreen Mode in the editor. A kebab menu on the button allows you to duplicate the current post as well.
+
 ## About
 
 Download the latest version of the plugin from [WordPress.org](https://wordpress.org/plugins/quickpost/) or from the [Latest Release area](https://github.com/createwithrani/quickpost/releases/).
@@ -24,10 +25,10 @@ If you need support, please use the support forum to reach out. 🆘
 
 ### Key Features
 
-* A disabled button is available in the toolbar in brand new posts
-* The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
-* You can duplicate the current post with two clicks.
-* A keyboard shortcut to create a new post directly from your keyboard (Ctrl + Option + N on Mac or Alt + Shift + N on Windows)
+- A disabled button is available in the toolbar in brand new posts
+- The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
+- You can duplicate the current post with two clicks.
+- A keyboard shortcut to create a new post directly from your keyboard (Ctrl + Option + N on Mac or Alt + Shift + N on Windows)
 
 ### Requirements
 
@@ -38,7 +39,7 @@ If you need support, please use the support forum to reach out. 🆘
 
 As of v0.1.2, you can filter the visibilty of the entire QuickPost button using the filter `QuickPost.Display`. QuickPost has a property called `visibility`, which you can set to `true` or `false` depending on a condition of your choosing.
 
-### Example: Only allow Administrators to see the button:
+### Example: Only allow Administrators to see the button
 
 ```js
 import { addFilter } from "@wordpress/hooks";
@@ -70,8 +71,11 @@ addFilter(
 	onlyAdmins
 );
 ```
-## Thanks these lovely humans!
+
+## Thanks these lovely humans
+
 This was an odd duck, although relatively easy to make. I truly appreciate people taking time out of their day to test and give me feedback so I could make this tiny but handy plugin great. Major props to @sc0ttkclark, @treadlightly, and @christinaworkman for all their help! 💟
 
 ## Contributors
+
 @aurooba, @pixolin, @kkoppenhaver
