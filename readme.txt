@@ -62,6 +62,10 @@ The plugin provides a filter called `QuickPostDisplay` to help you affect QuickP
 
 == Changelog ==
 
+= 0.1.5 - Feb 27, 2023 =
+
+* Adds a new keyboard shortcut to create a new post directly from your keyboard (Ctrl + Option + N on Mac or Alt + Shift + N on Windows)
+
 = 0.1.4 - May 10, 2022 =
 
 * Looks like the last release didn't get pushed correctly, so this is a push to actually fix the `common.min.css` problem.
