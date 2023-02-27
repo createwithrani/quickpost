@@ -1,17 +1,17 @@
-# Copyright (C) 2022 Aurooba Ahmed
+# Copyright (C) 2023 Aurooba Ahmed
 # This file is distributed under the same license as the QuickPost plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: QuickPost 0.1.2\n"
+"Project-Id-Version: QuickPost 0.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/quickpost\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-06T15:27:58+00:00\n"
+"POT-Creation-Date: 2023-02-27T15:43:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: createwithrani-quickpost\n"
 
 #. Plugin Name of the plugin
@@ -34,23 +34,38 @@ msgstr ""
 msgid "https://aurooba.com"
 msgstr ""
 
+#: build/index.js:80
+#: src/add-button.js:25
+#: build/index.js:39
+msgid "Ctrl + Option + N"
+msgstr ""
+
+#: build/index.js:82
+#: build/index.js:84
+#: src/add-button.js:27
+#: src/add-button.js:29
+#: build/index.js:41
+#: build/index.js:43
+msgid "Alt + Shift + N"
+msgstr ""
+
 #. translators: %1$s: Name of current post type.
-#: build/index.js:92
-#: src/add-button.js:39
-#: build/index.js:53
+#: build/index.js:113
+#: src/add-button.js:60
+#: build/index.js:74
 msgid "Add new %1$s"
 msgstr ""
 
 #. translators: %s: singular label of current post type i.e Page, Post
-#: build/index.js:193
+#: build/index.js:214
 #: src/duplicate-menu-item.js:65
-#: build/index.js:127
+#: build/index.js:150
 msgid "Edit duplicated %s"
 msgstr ""
 
 #. translators: %s: singular label of current post type i.e Page, Post
-#: build/index.js:203
+#: build/index.js:224
 #: src/duplicate-menu-item.js:80
-#: build/index.js:142
+#: build/index.js:165
 msgid "Duplicate %s"
 msgstr ""
