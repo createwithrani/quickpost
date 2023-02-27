@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": "Aurooba Ahmed",
   "scripts": {
-    "start": "grunt default",
+    "start": "wp-scripts start",
     "readme": "grunt readme",
     "i18n": "grunt i18n",
     "build": "wp-scripts build",
@@ -17,10 +17,7 @@
     "lint:md:js": "wp-scripts lint-md-js",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "packages-update": "wp-scripts packages-update",
-    "plugin-zip": "wp-scripts plugin-zip",
-    "startwp": "wp-scripts start",
-    "test:e2e": "wp-scripts test-e2e",
-    "test:unit": "wp-scripts test-unit-js"
+    "plugin-zip": "wp-scripts plugin-zip"
   },
   "dependencies": {
     "@wordpress/block-editor": "^8.0.11",

@@ -1,10 +1,10 @@
 === QuickPost - Add New Posts & Duplicate from the Block Editor ===
-Contributors:      aurooba, pixolin
+Contributors:      aurooba, pixolin, kkoppenhaver
 Tags:              add new, gutenberg, add new post, block editor, duplicate post, duplicate
 Requires at least: 5.7
-Tested up to:      6.0
+Tested up to:      6.1
 Requires PHP:      7.0
-Stable tag:        0.1.4
+Stable tag:        0.1.5
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Donate link:       https://github.com/sponsors/aurooba
@@ -32,10 +32,7 @@ If you need support, please use the support forum to reach out. 🆘
 * A disabled button is available in the toolbar in brand new posts
 * The "Add New" button becomes clickable once your post's status is auto-draft, draft, pending, published, or any other state except new.
 * You can duplicate the current post with two clicks.
-
-### Upcoming Features
-
-* A handy shortcut to create new posts from your keyboard when in the block editor
+* A keyboard shortcut to create a new post directly from your keyboard (Ctrl + Option + N on Mac or Alt + Shift + N on Windows)
 
 === Stay Connected ===
 
