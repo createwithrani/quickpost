@@ -7,7 +7,7 @@
  * Author URI:      https://aurooba.com
  * Text Domain:     createwithrani-quickpost
  * Domain Path:     /languages
- * Version:         0.1.4
+ * Version:         0.1.5
  *
  * @package         createwithrani-quickpost
  */

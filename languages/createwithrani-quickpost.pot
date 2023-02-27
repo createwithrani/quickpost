@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the QuickPost plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: QuickPost 0.1.4\n"
+"Project-Id-Version: QuickPost 0.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/quickpost\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
