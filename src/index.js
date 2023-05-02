@@ -61,6 +61,8 @@ subscribe(() => {
 			);
 		});
 	}
+
+	// If the View Post Button already exists, skip render
 	if (viewpostbutton) {
 		return;
 	} else {
@@ -88,7 +90,6 @@ subscribe(() => {
 			);
 		});
 	}
-
 });
 
 document.addEventListener("keydown", listenForKeyboardShortcut);
