@@ -3,6 +3,7 @@
  */
 import { render } from "@wordpress/element";
 import { subscribe } from "@wordpress/data";
+import { registerPlugin } from "@wordpress/plugins";
 import domReady from "@wordpress/dom-ready";
 
 /**
@@ -11,6 +12,11 @@ import domReady from "@wordpress/dom-ready";
 import QuickPostButton from "./quick-post";
 import ViewPostButton from "./view-post-button";
 import { listenForKeyboardShortcut, insertAfter } from "./utils";
+import { QuickPostPreferences } from "./quickpost-preferences";
+
+registerPlugin("createwithrani/quickpost-preferences", {
+	render: QuickPostPreferences,
+});
 
 /**
  * Let's subscribe (because I finally understand what this does better)
