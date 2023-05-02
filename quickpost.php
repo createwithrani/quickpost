@@ -19,8 +19,8 @@
  */
 function createwithrani_quickpost_script() {
 
-	$dir = dirname( __FILE__ );
-	$index_js = 'build/index.js';
+	$dir       = dirname( __FILE__ );
+	$index_js  = 'build/index.js';
 	$index_css = '/build/index.css';
 
 	// automatically load dependencies and version
@@ -29,9 +29,10 @@ function createwithrani_quickpost_script() {
 		'createwithrani-quickpost-js',
 		plugins_url( $index_js, __FILE__ ),
 		$asset_file['dependencies'],
-		$asset_file['version']
+		$asset_file['version'],
+		true,
 	);
-	wp_set_script_translations( 'createwithrani-quickpost-js', 'createwithrani-quickpost', plugin_dir_path(__FILE__) . 'languages/' );
+	wp_set_script_translations( 'createwithrani-quickpost-js', 'createwithrani-quickpost', plugin_dir_path( __FILE__ ) . 'languages/' );
 	wp_enqueue_script(
 		'createwithrani-quickpost-js'
 	);

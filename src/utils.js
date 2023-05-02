@@ -81,3 +81,7 @@ export function listenForKeyboardShortcut(event) {
 		document.querySelector("#createwithrani-quick-post-button").click();
 	}
 }
+
+export function insertAfter(referenceNode, newNode) {
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
